@@ -7,7 +7,7 @@ Requirement
 -----------
 1. Nodejs v0.10.26+
 2. GraphicsMagick v1.3.19+
-
+3. Redis v2.8.13+
 
 Install
 -------
@@ -54,7 +54,7 @@ stagejs update [--edge]
 This will update `bower.json` and then update the bower managed packages. It will also update the *default* theme package. If you put `--edge` option into the command, it will also fetch and replace `stage.js` and `stage.min.js` with the latest edge build from the Stage.js project repository.
 
 ###Build project
-(Front-end only, doesn't require app server to be running)
+(single config file - dist.js, doesn't require app server to be running)
 ```
 stagejs build [--dist <path to your deploy folder>] [--config <config name>]
 ```
@@ -64,10 +64,11 @@ This will build your project into production ready package, including js combine
 
 
 ###Start dev app server
+(single config/setup file - profile.js)
 ```
 stagejs serve [--port <port number>] [--profile <profile name>]
 ```
-This will start the development server for you. It includes CORS, HTTP(s) Request Forwarding and normal RESTful API & DB/Store stuff. It also includes code change monitors for you to easily watch `*.less` theme file and `*.html` template file changes. Config to this server will be read in from its profile, you can enable/disable its features there. 
+This will start the development server for you. It includes CORS, HTTP(s) Request Forwarding, WebSocket, Background Tasks, RESTful API and DB/Store. It also includes code change monitors for you to easily watch `*.less` theme file and `*.html` template file changes. Config to this server will be read in from its profile, you can enable/disable its features there and add more customized stuff if needs be.
 
 **Limitation**: There is no group/role based authorization yet, only ACL based authentication atm.
 
@@ -82,7 +83,7 @@ stagejs route <your route name>
 stagejs middleware <your middleware name>
 ```
 
-**Limitation**: It requires more effort than just creating a middleware definition file from this command. Given that the sequence of middleware loading does affect your application, and some of the middleware requires additional configure to setup, you will have to manually edit the middleware stack file before your new middleware can take effect in the app server.
+**Limitation**: It requires more effort than just creating a middleware definition file from this command. Given that the sequence of middleware loading does affect your application, and some of the middleware requires additional configure to setup, you will have to manually edit the middleware stack in the server profile before your new middleware can take effect in the app server.
 
 ###Create tasks
 ```
@@ -91,9 +92,15 @@ stagejs task <your task name>
 This will create an empty background task definiton stub for you.
 
 
-Add your own command
---------------------
-...
+The .stagejs file
+-----------------
+This is the optional env file for `stagejs` cli, which normally contains the following information:
+```
+#paths
+implementation = ./implementation
+tools = ./tools
+```
+For it to take effect, simply put it under the current working directory where you invoke the `stagejs` command.
 
 
 Change log

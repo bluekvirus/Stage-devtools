@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Devtools for convenient Stage.js development.",
   "main": "index.js",
+  "bin": {
+    "stagejs": "./cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +18,16 @@
   "bugs": {
     "url": "https://github.com/bluekvirus/Stage-devtools/issues"
   },
-  "homepage": "https://github.com/bluekvirus/Stage-devtools"
+  "homepage": "https://github.com/bluekvirus/Stage-devtools",
+  "keywords": [
+    "stage.js",
+    "dev",
+    "tools",
+    "cli",
+    "create",
+    "update",
+    "build",
+    "server",
+    "monitor"
+  ]
 }
