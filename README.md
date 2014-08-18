@@ -37,40 +37,37 @@ stagejs view <your view name in dotted notation>
 ```
 This is to create an empty named view script and its mockup template. e.g `a.b.c` means to create both `js/a/b/c.js` and `static/template/a/b/c.html`.
 
-###Create/Update theme
+###Create/Refresh theme
 (You can also update existing theme with this cmd)
 ```
 stagejs theme <your theme name> [--force]
 ```
-This will create a new theme for you to develop with, which extends from the default theme package. If the theme already exists, it will refresh it. (With css-sprite generation included)
+This will create a new theme for you to develop with, which extends from the *default* theme package. If the theme already exists, it will refresh it. (With css-sprite generation included)
 
-**Note**: Refresh a theme will not copy the original default theme package over again, so if you want to keep that part updated as well you will have to do it manually. Or, if you are sure copying over again will not clear/affect any of the new style you've put into the targeted theme, simply add `--force` into the command. 
+**Note**: Refresh a theme will not copy the original *default* theme package over again, so if you want to keep that part updated as well you will have to do it manually. Or, if you are sure copying over again will not clear/affect any of the new style you've put into the targeted theme, simply add `--force` into the command. 
 
-###Start monitors
+
+###Update project
 ```
-//start all monitors, including theme and template monitors
-stagejs monitors
-
-//or
-stagejs monitor theme [specific theme]
-stagejs monitor template
+stagejs update [--edge]
 ```
-This will start the code monitors for automatically detect changes in targeted parts of your project and invoke processing/compile routine automatically.
-
-**Limitation**: The theme monitors will not recompile the css-sprite upon `.less` file changes. You will need to manually type in the `stagejs theme` command again to refresh the theme if your icon/pic/logo resource changes. Or, you can use the `stagejs build` command below.
+This will update `bower.json` and then update the bower managed packages. It will also update the *default* theme package. If you put `--edge` option into the command, it will also fetch and replace `stage.js` and `stage.min.js` with the latest edge build from the Stage.js project repository.
 
 ###Build project
 (Front-end only, doesn't require app server to be running)
 ```
 stagejs build [--dist <path to your deploy folder>] [--config <config name>]
 ```
-This will build your project into production ready package, including js combine/minification, *.less compilation and css-sprite generation.
+This will build your project into production ready package, including js combine/minification, folder merge/creation and file copying.
 
-###Start app server
+**Limitation**: The build command requires a config file to present (defaults on `dist.js`) and the build process will not refresh your project themes, so make sure you've done that before invoking build.
+
+
+###Start dev app server
 ```
 stagejs serve [--port <port number>] [--profile <profile name>]
 ```
-This will start the development server for you. It includes CORS, HTTP(s) Request Forwarding and normal RESTful API & DB stuff. Config to this server will be read in from its profile.
+This will start the development server for you. It includes CORS, HTTP(s) Request Forwarding and normal RESTful API & DB/Store stuff. It also includes code change monitors for you to easily watch `*.less` theme file and `*.html` template file changes. Config to this server will be read in from its profile, you can enable/disable its features there. 
 
 **Limitation**: There is no group/role based authorization yet, only ACL based authentication atm.
 
@@ -92,6 +89,11 @@ stagejs middleware <your middleware name>
 stagejs task <your task name>
 ```
 This will create an empty background task definiton stub for you.
+
+
+Add your own command
+--------------------
+...
 
 
 Change log
