@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
  * The Stage.js dev cli tool cmd loader
  *
@@ -41,10 +43,10 @@ if(fs.existsSync(bowerFile)){
 }
 
 //2. check required cmd
-//remove node or stagejs
+//remove node
 var args = process.argv.slice(1);
-//remove ../cli.js
-if(args[0] === __filename)
+//remove ../cli.js or stagejs
+if(args[0] === __filename || /stagejs$/.test(args[0]))
 	args.shift();
 //grab cmd
 var cmd = args.shift(),
@@ -54,12 +56,19 @@ if(cmd === '-v' || cmd === '--version'){
 	console.log(packageInfo.version.yellow);
 	process.exit(0);
 }
+if(cmd === '-h' || cmd === '--help'){
+	//TBI load and print the help messages
+	process.exit(0);
+}
 if(!cmd || !fs.existsSync(cmdFile)) {
 	console.error('Invalid Command:'.red, cmd);
 	process.exit(1);
 }
 
 //3. run the cmd
+	
+	//TBI report the cmd usage
+
 process.env.stagejs = JSON.stringify(env);
 args.unshift(cmdFile);
 require('child_process').spawn('node', args, {

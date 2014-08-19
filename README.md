@@ -1,4 +1,4 @@
-Stage-devtools    v0.1.1
+Stage-devtools    v0.1.x
 ========================
 Devtools for convenient Stage.js development.
 

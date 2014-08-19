@@ -1,6 +1,6 @@
 Change Log
 ==========
-0.1.2 (2014-08-18*)
+0.1.x (2014-08-18*)
 -------------------
 
 In progress...
@@ -10,6 +10,11 @@ In progress...
 * Fix serve command;
 * Fix create command;
 * Add report ability to cli.js about command usage;
+
+
+0.1.4 (2014-08-18)
+Fixed bin setting in package.json;
+Fixed update command; (without bower/npm update)
 
 
 0.1.1 (2014-08-18)
