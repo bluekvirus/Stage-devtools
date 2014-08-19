@@ -1,4 +1,4 @@
-Stage-devtools    v0.1.0
+Stage-devtools    v0.1.1
 ========================
 Devtools for convenient Stage.js development.
 
@@ -6,8 +6,9 @@ Devtools for convenient Stage.js development.
 Requirement
 -----------
 1. Nodejs v0.10.26+
-2. GraphicsMagick v1.3.19+
-3. Redis v2.8.13+
+2. Bower v1.3.1+
+3. GraphicsMagick v1.3.19+
+4. Redis v2.8.13+
 
 Install
 -------
@@ -19,7 +20,7 @@ This will give you a globally available `stagejs` command in cli.
 
 Usage
 -----
-###Create new project
+###Initialize new project
 ```
 stagejs init
 ```
@@ -27,13 +28,13 @@ This will download the latest Stage.js starter kit for you and prepare the devel
 
 ###Create contexts
 ```
-stagejs context <your context name>
+stagejs create context <your context name>
 ```
 This will create an empty context script and its mockup template.
 
 ###Create views
 ```
-stagejs view <your view name in dotted notation>
+stagejs create view <your view name in dotted notation>
 ```
 This is to create an empty named view script and its mockup template. e.g `a.b.c` means to create both `js/a/b/c.js` and `static/template/a/b/c.html`.
 
@@ -51,7 +52,7 @@ This will create a new theme for you to develop with, which extends from the *de
 ```
 stagejs update [--edge]
 ```
-This will update `bower.json` and then update the bower managed packages. It will also update the *default* theme package. If you put `--edge` option into the command, it will also fetch and replace `stage.js` and `stage.min.js` with the latest edge build from the Stage.js project repository.
+This will update `bower.json` and then update the bower managed packages. It will also update the *default* theme package and tools. If you put `--edge` option into the command, it will also fetch and replace `stage.js`, `stage.min.js` and `dependencies.min.js` with the latest edge build from the Stage.js project repository.
 
 ###Build project
 (single config file - dist.js, doesn't require app server to be running)
@@ -75,25 +76,25 @@ This will start the development server for you. It includes CORS, HTTP(s) Reques
 ###Create routes
 (+RESTful APIs based on Expressjs4)
 ```
-stagejs route <your route name>
+stagejs create route <your route name>
 ```
 
 ###Create middlewares
 ```
-stagejs middleware <your middleware name>
+stagejs create middleware <your middleware name>
 ```
 
 **Limitation**: It requires more effort than just creating a middleware definition file from this command. Given that the sequence of middleware loading does affect your application, and some of the middleware requires additional configure to setup, you will have to manually edit the middleware stack in the server profile before your new middleware can take effect in the app server.
 
 ###Create tasks
 ```
-stagejs task <your task name>
+stagejs create task <your task name>
 ```
 This will create an empty background task definiton stub for you.
 
 
-The .stagejs file
------------------
+The .stagejsrc file
+-------------------
 This is the optional env file for `stagejs` cli, which normally contains the following information:
 ```
 #paths
@@ -111,6 +112,11 @@ Change log
 Contribute
 ----------
 ...
+
+
+Distribute
+----------
+Update `README.md`, `CHANGELOG.md` and `package.json` before releasing new versions through `npm publish`.
 
 
 License

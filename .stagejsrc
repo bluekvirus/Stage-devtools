@@ -1,0 +1,9 @@
+{
+	"repo": "http://bluekvirus.github.io/Stage.js/static/resource/default/download",
+	"edge": "stagejs-edge.tar.gz",
+	"kit": "stagejs-starter-kit.tar.gz",
+
+	"design": "./design",
+	"implementation": "./implementation",
+	"tools": "./tools"
+}
