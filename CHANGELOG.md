@@ -4,7 +4,6 @@ Change Log
 -------------------
 
 In progress...
-* Fix update command;
 * Fix theme command;
 * Fix build command;
 * Fix serve command;
@@ -12,9 +11,11 @@ In progress...
 * Add report ability to cli.js about command usage;
 
 
-0.1.4 (2014-08-18)
+0.1.5 (2014-08-20)
+------------------
+Refined env and init command;
+Fixed update command;
 Fixed bin setting in package.json;
-Fixed update command; (without bower/npm update)
 
 
 0.1.1 (2014-08-18)

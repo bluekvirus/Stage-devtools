@@ -46,7 +46,9 @@ console.log('---------------------'.yellow);
 //}
 
 if(!env['stagejs-version']) 
-	console.log('[No project found at the current directory]'.grey);
+	console.log('[', 'No project found at the current directory'.grey, ']');
+else
+	console.log('[', 'Project detected'.green, ']');
 
 
 

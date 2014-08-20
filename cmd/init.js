@@ -16,7 +16,7 @@ var env = JSON.parse(process.env.stagejs);
 var download = require(path.join(env.twd, 'util/download.js'));
 
 if(env['stagejs-version']){
-	console.error('You already have a project here...'.red);
+	console.error('You already have a project here...'.red, 'use \'update\' instead.'.yellow);
 	process.exit(1);
 }
 
@@ -41,7 +41,8 @@ download([env.repo, env.kit].join('/'), tmpFolder, true, function(tmpFolder){
 
 	//3.[optional] run npm install
 	console.log('Installing Nodejs libraries ...'.yellow);
-	shell.cd('../tools');
+	shell.cd('..');
+	shell.cd(env.tools);
 	shell.exec('npm install');
 
 	//4.[optional] create a new theme

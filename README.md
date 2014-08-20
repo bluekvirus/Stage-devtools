@@ -50,9 +50,12 @@ This will create a new theme for you to develop with, which extends from the *de
 
 ###Update project
 ```
-stagejs update [--edge]
+stagejs update [-e, --edge] [-p, --packages]
 ```
 This will update `bower.json` and then update the bower managed packages. It will also update the *default* theme package and tools. If you put `--edge` option into the command, it will also fetch and replace `stage.js`, `stage.min.js` and `dependencies.min.js` with the latest edge build from the Stage.js project repository.
+
+By default, the `update` command will only install missing libraries & packages indicated by the updated `bower.json` and `package.json`. If you want to fully update all of the installed libraries & packages in addition, please indicate this using the `--packages` flag.
+
 
 ###Build project
 (single config file - dist.js, doesn't require app server to be running)
@@ -95,11 +98,12 @@ This will create an empty background task definiton stub for you.
 
 The .stagejsrc file
 -------------------
-This is the optional env file for `stagejs` cli, which normally contains the following information:
+This is the optional env file for `stagejs` cli, which normally contains the following information: (in JSON format)
 ```
-#paths
-implementation = ./implementation
-tools = ./tools
+{
+    "implementation": "./implementation",
+    "tools": "./tools"
+}
 ```
 For it to take effect, simply put it under the current working directory where you invoke the `stagejs` command.
 
