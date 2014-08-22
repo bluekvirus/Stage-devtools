@@ -4,11 +4,14 @@ Change Log
 -------------------
 
 In progress...
-* Fix theme command;
-* Fix build command;
-* Fix serve command;
 * Fix create command;
 * Add report ability to cli.js about command usage;
+
+0.1.6 (2014-08-22)
+------------------
+* Fixed theme command;
+* Fixed build command;
+* Fixed serve command;
 
 
 0.1.5 (2014-08-20)

@@ -8,7 +8,8 @@ Requirement
 1. Nodejs v0.10.26+
 2. Bower v1.3.1+
 3. GraphicsMagick v1.3.19+
-4. Redis v2.8.13+
+4. Redis v2.8.13+ [optional]
+5. MongoDB v2.6.3+ [optional]
 
 Install
 -------
@@ -41,11 +42,13 @@ This is to create an empty named view script and its mockup template. e.g `a.b.c
 ###Create/Refresh theme
 (You can also update existing theme with this cmd)
 ```
-stagejs theme <your theme name> [--force]
+stagejs theme <your theme name>
 ```
 This will create a new theme for you to develop with, which extends from the *default* theme package. If the theme already exists, it will refresh it. (With css-sprite generation included)
 
-**Note**: Refresh a theme will not copy the original *default* theme package over again, so if you want to keep that part updated as well you will have to do it manually. Or, if you are sure copying over again will not clear/affect any of the new style you've put into the targeted theme, simply add `--force` into the command. 
+**Note**: Refresh a theme will not copy the original *default* theme package over again, so if you want to keep that part updated as well you will have to do it manually.
+
+**Tip**: use `-h` to see more options with this command.
 
 
 ###Update project
@@ -56,7 +59,6 @@ This will update `bower.json` and then update the bower managed packages. It wil
 
 By default, the `update` command will only install missing libraries & packages indicated by the updated `bower.json` and `package.json`. If you want to fully update all of the installed libraries & packages in addition, please indicate this using the `--packages` flag.
 
-
 ###Build project
 (single config file - dist.js, doesn't require app server to be running)
 ```
@@ -65,6 +67,8 @@ stagejs build [--dist <path to your deploy folder>] [--config <config name>]
 This will build your project into production ready package, including js combine/minification, folder merge/creation and file copying.
 
 **Limitation**: The build command requires a config file to present (defaults on `dist.js`) and the build process will not refresh your project themes, so make sure you've done that before invoking build.
+
+**Tip**: use `-h` to see more options with this command.
 
 
 ###Start dev app server
