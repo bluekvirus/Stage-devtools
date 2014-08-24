@@ -16,11 +16,21 @@ Install
 ```
 npm install -g stage-devtools
 ```
-This will give you a globally available `stagejs` command in cli.
+This will give you a globally available `stagejs` command in cli. You can check it with the version and help options on:
+```
+stagejs -v
+stagejs -h, --help
+```
 
 
 Usage
 -----
+###Check environment
+```
+stagejs env
+```
+Pay attention to the result of this command, you might need to install additional programs required by the dev toolset.
+
 ###Initialize new project
 ```
 stagejs init
@@ -66,7 +76,7 @@ stagejs build [--dist <path to your deploy folder>] [--config <config name>]
 ```
 This will build your project into production ready package, including js combine/minification, folder merge/creation and file copying.
 
-**Limitation**: The build command requires a config file to present (defaults on `dist.js`) and the build process will not refresh your project themes, so make sure you've done that before invoking build.
+**Limitation**: The build command requires a config file to present (defaults on `tools/build/config.dist.js`) and the build process will not refresh your project themes, so make sure you've done that before invoking build.
 
 **Tip**: use `-h` to see more options with this command.
 
@@ -112,14 +122,23 @@ This is the optional env file for `stagejs` cli, which normally contains the fol
 For it to take effect, simply put it under the current working directory where you invoke the `stagejs` command.
 
 
-Change log
-----------
-...
-
-
 Contribute
 ----------
-...
+Clone the project then run:
+```
+npm install
+```
+Add or modify commands in `/cmd` folder and have them tested through:
+```
+node Stage-devtools/cli.js [cmd]
+```
+So, a commmand named `abc.js` under `/cmd` can be invoked like this:
+```
+node [Stage-devtools folder]/cli.js abc [rest of the arguments]
+```
+Make sure you consult the `env.js` and `init.js` before adding new commands.
+
+You will need to add an issue then make a pull-request to submit your modifications.
 
 
 Distribute

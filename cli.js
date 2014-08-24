@@ -15,6 +15,7 @@
 var path = require('path'),
 fs = require('fs-extra'),
 _ = require('underscore'),
+os = require('os'),
 colors = require('colors');
 
 //vars
@@ -57,7 +58,18 @@ if(cmd === '-v' || cmd === '--version'){
 	process.exit(0);
 }
 if(cmd === '-h' || cmd === '--help'){
-	//TBI load and print the help messages
+	console.log(os.EOL); //+newline
+	console.log('\tExamples:\t', 'stagejs ' + '<cmd>'.yellow + ' [options]');
+	console.log('\tRead help:\t', 'stagejs ' + '<cmd>'.yellow + ' -h, --help');
+	console.log('');
+	var ac = fs.readdirSync(path.join(env.twd, 'cmd'));
+	var pattern = /\.js$/;
+	ac = _.map(ac, function(c){
+		if(pattern.test(c))
+			return  path.basename(c, '.js');
+	});
+	console.log('\tAvailable', 'cmd'.yellow+':\t', _.compact(ac).join(', '));
+	console.log(os.EOL); //+newline
 	process.exit(0);
 }
 if(!cmd || !fs.existsSync(cmdFile)) {
@@ -71,7 +83,13 @@ if(!cmd || !fs.existsSync(cmdFile)) {
 
 process.env.stagejs = JSON.stringify(env);
 args.unshift(cmdFile);
-require('child_process').spawn('node', args, {
+console.log(os.EOL); //++newline
+
+var cmdproc = require('child_process').spawn('node', args, {
 	//cwd: env.cwd,
 	stdio: 'inherit'
+});
+
+cmdproc.on('close', function(code){
+	console.log(os.EOL); //++newline
 });

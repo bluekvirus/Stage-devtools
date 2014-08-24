@@ -19,5 +19,4 @@ if(!env['stagejs-version']){
 	process.exit(1);
 }
 
-shell.cd(path.join(env.cwd, env.tools, 'build'));
-shell.exec('node run.js -B '+ path.join('..', '..', env.implementation) + ' ' + process.argv.slice(2).join(' '));
+shell.exec('node ' + path.join(env.cwd, env.tools, 'build', 'run.js') + ' -B '+ path.join('..', '..', env.implementation) + ' ' + process.argv.slice(2).join(' '));

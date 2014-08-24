@@ -7,6 +7,14 @@ In progress...
 * Fix create command;
 * Add report ability to cli.js about command usage;
 
+
+0.1.7 (2014-08-24)
+------------------
+* Refined build cmd output path;
+* Refined env cmd, +more info;
+* Refined cmd mount script(cli.js), +help & newlines;
+
+
 0.1.6 (2014-08-22)
 ------------------
 * Fixed theme command;
