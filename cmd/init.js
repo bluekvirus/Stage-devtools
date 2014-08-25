@@ -50,5 +50,14 @@ download([env.repo, env.kit].join('/'), tmpFolder, true, function(tmpFolder){
 	shell.cd('themeprep');
 	shell.exec('node run project');
 
-	console.log('Done'.green, 'You can now start the dev server and begin development.'.yellow);
+	//5. initialize git
+	if(shell.which('git')){
+		console.log('initializing git repo ...'.yellow);
+		shell.mv(path.join(env.cwd, 'gitignore'), path.join(env.cwd, '.gitignore'));
+		shell.cd(env.cwd);
+		shell.exec('git init');
+	}else {
+		shell.rm(path.join(env.cwd, 'gitignore'));
+	}
+	console.log('Done'.green, 'You can now start the dev server and begin development.'.yellow, 'stagejs serve [--port <number>]');
 });

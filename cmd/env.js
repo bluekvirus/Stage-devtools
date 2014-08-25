@@ -36,7 +36,8 @@ var cmdsToCheck = [
 	{cmd:'npm', required: true, info: 'Nodejs package manager'},
 	{cmd:'gm', required: true, info: 'GraphicsMagick image processor'}, 
 	{cmd:'redis-server', required: false, info: 'Redis key-value store'},
-	{cmd:'mongod', required: false, info: 'MongoDB NoSQL Database'}
+	{cmd:'mongod', required: false, info: 'MongoDB NoSQL database'},
+	{cmd:'git', required: false, info: 'Git source code manager'}
 ];
 _.each(cmdsToCheck, function(d){
 	var msg = 'locate ' + d.cmd.yellow + ' (' + d.info.grey + ') ... ',

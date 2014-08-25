@@ -58,7 +58,7 @@ if(cmd === '-v' || cmd === '--version'){
 	process.exit(0);
 }
 if(cmd === '-h' || cmd === '--help'){
-	console.log(os.EOL); //+newline
+	console.log(); //+newline
 	console.log('\tExamples:\t', 'stagejs ' + '<cmd>'.yellow + ' [options]');
 	console.log('\tRead help:\t', 'stagejs ' + '<cmd>'.yellow + ' -h, --help');
 	console.log('');
@@ -69,7 +69,7 @@ if(cmd === '-h' || cmd === '--help'){
 			return  path.basename(c, '.js');
 	});
 	console.log('\tAvailable', 'cmd'.yellow+':\t', _.compact(ac).join(', '));
-	console.log(os.EOL); //+newline
+	console.log(); //+newline
 	process.exit(0);
 }
 if(!cmd || !fs.existsSync(cmdFile)) {
@@ -83,7 +83,7 @@ if(!cmd || !fs.existsSync(cmdFile)) {
 
 process.env.stagejs = JSON.stringify(env);
 args.unshift(cmdFile);
-console.log(os.EOL); //++newline
+console.log(); //+newline os.EOL
 
 var cmdproc = require('child_process').spawn('node', args, {
 	//cwd: env.cwd,
@@ -91,5 +91,5 @@ var cmdproc = require('child_process').spawn('node', args, {
 });
 
 cmdproc.on('close', function(code){
-	console.log(os.EOL); //++newline
+	console.log(); //+newline
 });
