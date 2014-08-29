@@ -1,16 +1,16 @@
 Change Log
 ==========
-0.1.x (2014-08-18*)
+0.1.x (2014-08-29*)
 -------------------
 * Refined build cmd output relative path;
 * Refined env cmd, +more info;
 * Refined cmd mount script(cli.js), +help & newlines;
-* Refined init cmd, +git support;
+* Refined init cmd, +git support, +error detection;
+* Fixed export command; (linked with build + config.export.js)
 
 In progress...
 * Fix create command;
 * Fix import command;
-* Fix export command; should be linked with build + config.export.js)
 * Add report ability to cli.js about command usage;
 
 

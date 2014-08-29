@@ -19,7 +19,7 @@
  * Create view (named)
  * Create context (named view with default type and interfaces/listeners)
  * Create editor (named view with default type and interfaces/listeners)
- * Create rule/validator (editor/data validation function)
+ * Create validator (editor/data validation function)
  * Create widget (named view with default type and interfaces/listeners)
  * Create plugin ($.fn jQuery plugin)
  * 

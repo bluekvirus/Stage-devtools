@@ -57,8 +57,8 @@ console.log('---------------------'.yellow);
 
 //system status check
 console.log('cpu(s):', String(os.cpus().length).yellow, '@', os.cpus()[0].model);
-var freemem = os.freemem()/1024/1024/1024;
-console.log('memory:', (_.str.numberFormat(freemem, 2)).yellow + 'GB', '/', (os.totalmem()/1024/1024/1024 + 'GB'), freemem < 0.25?'Warning: Free memory too low...'.red:'');
+var freemem = os.freemem()/1024/1024/1024, totalmem = os.totalmem()/1024/1024/1024;
+console.log('memory:', (_.str.numberFormat(freemem, 2)).yellow + 'GB', '/', (_.str.numberFormat(totalmem, 2).yellow + 'GB'), freemem < 0.25?'Warning: Free memory too low...'.red:'');
 console.log('operating system:', os.type().yellow);
 console.log('---------------------'.yellow);
 
