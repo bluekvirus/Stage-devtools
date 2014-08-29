@@ -47,15 +47,17 @@ if(!env['stagejs-version']){
 }
 
 program
+	.usage('[options] <type> <name>')
 	.version('0.1.0')
 	.option('-d, --dry', 'Only output the target file type and path instead of actually creating it.')
+	.option('-l, --list', 'List possible types of code you can create using this cmd.')
 	.parse(process.argv);
 
 var type = program.args[0], name = program.args[1], base;
 var jsTargets = {
 	client: {
 		types: ['view', 'context', 'editor', 'validator', 'widget', 'plugin'],
-		base: path.join(env.cwd, env.implementation, 'js')
+		base: path.join(env.cwd, env.implementation, 'js'),
 	},
 	server: {
 		types: ['router', 'middleware'],
@@ -63,6 +65,7 @@ var jsTargets = {
 	}
 };
 
+var p;
 function resolveToJSPath(type, name){
 	for(var x in jsTargets){
 		if(_.contains(jsTargets[x].types, type)){
@@ -72,12 +75,12 @@ function resolveToJSPath(type, name){
 	}
 	if(!base) return;
 
-	var p = name.split('.');
+	p = name.split('.');
 	if(p[p.length-1] === 'js') p.pop();
 	if(_.contains(jsTargets[x].types, p[0])){
 		base = path.join(base, p.join(path.sep));
 	}else {
-		base = path.join(base, type, p.join(path.sep));
+		base = path.join(base, type + (x === 'client'?'':'s'), p.join(path.sep));
 	}
 	
 	if(/\.js$/.test(base))
@@ -85,9 +88,40 @@ function resolveToJSPath(type, name){
 	return base + '.js';
 }
 
-console.log('Creating', type.yellow, '=>', resolveToJSPath(type, name).grey);
+//-l, --list
+if(program.list){
+	_.each(jsTargets, function(t, side){
+		console.log(side, 'side:', t.types);
+	});
+	return;
+}
+
+//guard A
+if(!type || !name){
+	console.error('Empty code type or name...'.red);
+	return;
+}
+
+//guard B
+var target = resolveToJSPath(type, name);
+if(!target) {
+	console.error(('There is no template for type: ' + type + '...').red, 'use \'-l, --list\' to see possible types.'.yellow);
+	return;
+}
+
+console.log('Creating', type.yellow, '=>', target.grey);
+//-d, --dry
 if(program.dry) return;
 
-console.log('TBI');
+fs.ensureDirSync(path.dirname(target));
+shell.cp(path.join(env.twd, 'tpl', type + '.js'), target);
 
+//special + html tpl
+var htmlRequiredTypes = ['view', 'context', 'editor', 'widget'];
+if(_.contains(htmlRequiredTypes, type)){
+	var tplHTMLName = p.join(path.sep) + '.html';
+	var tplHTMLPath = path.join(env.cwd, env.implementation, 'static', 'template', _.contains(htmlRequiredTypes, p[0])?'':type, tplHTMLName);
+	fs.ensureFileSync(tplHTMLPath);
+	fs.writeFileSync(tplHTMLPath, '<h1>Stage.js Rocks!</h1>');
+}
 

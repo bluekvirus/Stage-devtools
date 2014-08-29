@@ -10,6 +10,7 @@ Requirement
 3. GraphicsMagick v1.3.19+
 4. Redis v2.8.13+ [optional]
 5. MongoDB v2.6.3+ [optional]
+6. git v1.8+ [optional]
 
 Install
 -------
@@ -103,11 +104,23 @@ stagejs create middleware <your middleware name>
 
 **Limitation**: It requires more effort than just creating a middleware definition file from this command. Given that the sequence of middleware loading does affect your application, and some of the middleware requires additional configure to setup, you will have to manually edit the middleware stack in the server profile before your new middleware can take effect in the app server.
 
-###Create tasks
+###Create tasks (TBI)
 ```
 stagejs create task <your task name>
 ```
 This will create an empty background task definiton stub for you.
+
+###Export project code
+```
+stagejs export
+```
+This will package your project into `exported.tar.gz` according to `tools/build/config.export.js`.
+
+###Import project code
+```
+stagejs import [exported package file] [-o, --override]
+```
+This will copy the content of wanted code package over to your current project. Use the `-o or --override` flag to force overriding existing files during the import process.
 
 
 The .stagejsrc file
