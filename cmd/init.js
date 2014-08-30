@@ -26,9 +26,9 @@ shell.rm('-rf', tmpFolder);
 
 //1. grab starter-kit and extract to current location
 download([env.repo, env.kit].join('/'), tmpFolder, true, function(tmpFolder){
-	var error;
-	error = shell.mv(path.join(tmpFolder, 'kit', '*'), env.cwd);
-	error = shell.rm('-rf', tmpFolder);
+	//var error;
+	shell.mv(path.join(tmpFolder, 'kit', '*'), env.cwd);
+	shell.rm('-rf', tmpFolder);
 
 	//2. run bower install
 	console.log('Installing Javascript libraries ...'.yellow);
@@ -38,30 +38,29 @@ download([env.repo, env.kit].join('/'), tmpFolder, true, function(tmpFolder){
 		process.exit(1);
 		return;
 	}
-	error = shell.exec('bower install');
+	shell.exec('bower install');
 
 	//3.[optional] run npm install
 	console.log('Installing Nodejs libraries ...'.yellow);
 	shell.cd('..');
 	shell.cd(env.tools);
-	error = shell.exec('npm install');
+	shell.exec('npm install');
 
 	//4.[optional] create a new theme
 	console.log('Creating your project theme ...'.yellow);
 	shell.cd('themeprep');
-	error = shell.exec('node run project');
+	shell.exec('node run project');
 
 	//5. initialize git
 	if(shell.which('git')){
 		console.log('initializing git repo ...'.yellow);
 		shell.mv(path.join(env.cwd, 'gitignore'), path.join(env.cwd, '.gitignore'));
 		shell.cd(env.cwd);
-		error = shell.exec('git init');
+		shell.exec('git init');
 	}else {
 		shell.rm(path.join(env.cwd, 'gitignore'));
 	}
-	if(!error)
-		console.log('Done'.green, 'You can now start the dev server and begin development.'.yellow, 'stagejs serve [--port <number>]');
-	else
-		console.log('ERROR'.red, error, 'please double check your system enviroment...'.grey);
+	
+	console.log('Done'.green, 'You can now start the dev server and begin development.'.yellow, 'stagejs serve [--port <number>]');
+	//console.log('ERROR'.red, error, 'please double check your system enviroment...'.grey);
 });

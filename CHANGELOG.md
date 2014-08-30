@@ -1,11 +1,17 @@
 Change Log
 ==========
-0.1.x (2014-08-29*)
--------------------
+0.1.9 (2014-08-30*)
 
 In progress...
 
 * Add report ability to cli.js about command usage;
+
+
+0.1.8 (2014-08-30)
+-------------------
+* Reduced error detection in the `init` cmd.
+* Refined middleware, router code templates.
+
 
 0.1.7 (2014-08-29)
 ------------------

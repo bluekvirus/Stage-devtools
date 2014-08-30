@@ -40,7 +40,7 @@ This will download the latest Stage.js starter kit for you and prepare the devel
 
 ###Create contexts
 ```
-stagejs create context <your context name>
+stagejs create context <name>
 ```
 This will create an empty context script and its mockup template.
 
@@ -49,6 +49,21 @@ This will create an empty context script and its mockup template.
 stagejs create view <your view name in dotted notation>
 ```
 This is to create an empty named view script and its mockup template. e.g `a.b.c` means to create both `js/a/b/c.js` and `static/template/a/b/c.html`.
+
+###Create editors & validators
+```
+stagejs create editor <name>
+stagejs create validator <name>
+```
+Editors will also have their mockup template created.
+
+###Create widgets & plugins
+```
+stagejs create widget <name>
+stagejs create plugin <name>
+```
+Widgets will also have their mockup template created as.
+
 
 ###Create/Refresh theme
 (You can also update existing theme with this cmd)
@@ -94,12 +109,12 @@ This will start the development server for you. It includes CORS, HTTP(s) Reques
 ###Create routes
 (+RESTful APIs based on Expressjs4)
 ```
-stagejs create route <your route name>
+stagejs create router <your router name in dotted notation>
 ```
 
 ###Create middlewares
 ```
-stagejs create middleware <your middleware name>
+stagejs create middleware <name>
 ```
 
 **Limitation**: It requires more effort than just creating a middleware definition file from this command. Given that the sequence of middleware loading does affect your application, and some of the middleware requires additional configure to setup, you will have to manually edit the middleware stack in the server profile before your new middleware can take effect in the app server.
