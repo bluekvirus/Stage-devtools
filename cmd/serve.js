@@ -25,6 +25,10 @@ program
 	.option('-F, --profile [name]', 'Override which profile the devserver will be using', 'default')
 	.parse(process.argv);
 
+if(program.args[0]) {
+	program.port = program.port || program.args[0];
+}
+
 shell.cd(path.join(env.cwd, env.tools, 'devserver'));
 var result = shell.exec('node run.js ' + program.profile + ' ' + program.port);
 if(result!== 0) console.error('Server init error...'.red);

@@ -25,7 +25,7 @@ module.exports = function(server){
 
 	//get '/'
 	router.get('/', function(req, res, next){
-		res.json({stagejs: 'rocks!'});
+		res.json({stagejs: '!'});
 	});
 
 	//head, post, put, delete...

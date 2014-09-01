@@ -101,6 +101,8 @@ This will build your project into production ready package, including js combine
 (single config/setup file - profile.js)
 ```
 stagejs serve [--port <port number>] [--profile <profile name>]
+//or
+stagejs serve [port]
 ```
 This will start the development server for you. It includes CORS, HTTP(s) Request Forwarding, WebSocket, Background Tasks, RESTful API and DB/Store. It also includes code change monitors for you to easily watch `*.less` theme file and `*.html` template file changes. Config to this server will be read in from its profile, you can enable/disable its features there and add more customized stuff if needs be.
 

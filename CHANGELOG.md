@@ -1,12 +1,20 @@
 Change Log
 ==========
-0.1.9 (2014-08-30*)
-* Added middlewares copying (none-forced) in the update cmd.
-* Change git to required in the env cmd. (for bower to work properly)
+0.1.10 (2014-09-01*)
 
 In progress...
 
+* Fix the task code tpl and target to the create cmd;
 * Add report ability to cli.js about command usage;
+
+
+0.1.9 (2014-09-01)
+* Fixed middlewares copying (none-forced) in the update cmd.
+* Change git to required in the env cmd. (for bower to work properly)
+* Fixed main.js code tpl and target to the create cmd.
+* Refined context code tpl.
+* Fixed port arg short-cut in the serve cmd.
+* Fixed template creation routine/log in the create cmd.
 
 
 0.1.8 (2014-08-30)

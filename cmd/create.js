@@ -37,6 +37,7 @@ _ = require('underscore'),
 colors = require('colors'),
 path = require('path'),
 fs = require('fs-extra'),
+os = require('os'),
 shell = require('shelljs');
 
 var env = JSON.parse(process.env.stagejs);
@@ -54,9 +55,10 @@ program
 	.parse(process.argv);
 
 var type = program.args[0], name = program.args[1], base;
+if(type === 'main') name = name || 'main.js';
 var jsTargets = {
 	client: {
-		types: ['view', 'context', 'editor', 'validator', 'widget', 'plugin'],
+		types: ['main', 'view', 'context', 'editor', 'validator', 'widget', 'plugin'],
 		base: path.join(env.cwd, env.implementation, 'js'),
 	},
 	server: {
@@ -80,7 +82,7 @@ function resolveToJSPath(type, name){
 	if(_.contains(jsTargets[x].types, p[0])){
 		base = path.join(base, p.join(path.sep));
 	}else {
-		base = path.join(base, type + (x === 'client'?'':'s'), p.join(path.sep));
+		base = path.join(base, (type === 'main'?'':type) + (x === 'client'?'':'s'), p.join(path.sep));
 	}
 	
 	if(/\.js$/.test(base))
@@ -91,7 +93,7 @@ function resolveToJSPath(type, name){
 //-l, --list
 if(program.list){
 	_.each(jsTargets, function(t, side){
-		console.log(side, 'side:', t.types);
+		console.log(side.yellow, 'side:'.yellow, t.types.join(', '));
 	});
 	return;
 }
@@ -117,11 +119,23 @@ fs.ensureDirSync(path.dirname(target));
 shell.cp(path.join(env.twd, 'tpl', type + '.js'), target);
 
 //special + html tpl
-var htmlRequiredTypes = ['view', 'context', 'editor', 'widget'];
+var htmlRequiredTypes = ['main', 'view', 'context', 'editor', 'widget'];
 if(_.contains(htmlRequiredTypes, type)){
 	var tplHTMLName = p.join(path.sep) + '.html';
-	var tplHTMLPath = path.join(env.cwd, env.implementation, 'static', 'template', _.contains(htmlRequiredTypes, p[0])?'':type, tplHTMLName);
-	fs.ensureFileSync(tplHTMLPath);
-	fs.writeFileSync(tplHTMLPath, '<h1>Stage.js Rocks!</h1>');
+	var tplHTMLPath = path.join(env.cwd, env.implementation, 'static', 'template', _.contains(htmlRequiredTypes, p[0])?'':(type === 'main'?'':type), tplHTMLName);
+	console.log('Creating', 'template'.yellow, '=>', tplHTMLPath.grey);
+	if(!fs.existsSync(tplHTMLPath)){
+		fs.ensureFileSync(tplHTMLPath);
+		fs.writeFileSync(tplHTMLPath, 
+			[
+			'<h2>',
+				'<sup><i class="fa fa-quote-left"></i></sup>',
+				' Stage.js <i class="fa fa-exclamation"></i> ',
+				'<sup><i class="fa fa-quote-right"></i></sup>',
+			'</h2>'
+			].join(os.EOL)
+		);
+	}else
+		console.log('create:', 'dest file already exists:', tplHTMLPath);
 }
 
