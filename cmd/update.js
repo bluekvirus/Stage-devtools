@@ -67,6 +67,8 @@ download([env.repo, env.kit].join('/'), tmpFolder, true, function(tmpFolder){
 	shell.cp('-Rf', path.join(tmpFolder, 'kit', 'tools', 'devserver', 'run.js'), path.join(toolsFolder, 'devserver'));
 	shell.cp('-Rf', path.join(tmpFolder, 'kit', 'tools', 'devserver', 'bot', '*'), path.join(toolsFolder, 'devserver', 'bot'));
 	shell.cp('-Rf', path.join(tmpFolder, 'kit', 'tools', 'devserver', 'util', '*'), path.join(toolsFolder, 'devserver', 'util'));
+	shell.cp('-R', path.join(tmpFolder, 'kit', 'tools', 'devserver', 'middlewares', '*'), path.join(toolsFolder, 'devserver', 'middlewares'));
+
 	//merge/update package.json
 	mergeUpdateJSON(path.join(toolsFolder, 'package.json'), path.join(tmpFolder, 'kit', 'tools', 'package.json'));
 

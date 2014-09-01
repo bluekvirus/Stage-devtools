@@ -1,6 +1,7 @@
 Change Log
 ==========
 0.1.9 (2014-08-30*)
+* Added middlewares copying (none-forced) in the update cmd.
 
 In progress...
 
