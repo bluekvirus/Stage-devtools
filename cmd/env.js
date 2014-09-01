@@ -32,12 +32,12 @@ console.log('---------------------'.yellow);
 
 //programs/cli helpers to check
 var cmdsToCheck = [
+	{cmd:'git', required: true, info: 'Git source code manager'},
 	{cmd:'bower', required: true, info: 'Bower JS package manager'}, 
 	{cmd:'npm', required: true, info: 'Nodejs package manager'},
 	{cmd:'gm', required: true, info: 'GraphicsMagick image processor'}, 
 	{cmd:'redis-server', required: false, info: 'Redis key-value store'},
-	{cmd:'mongod', required: false, info: 'MongoDB NoSQL database'},
-	{cmd:'git', required: false, info: 'Git source code manager'}
+	{cmd:'mongod', required: false, info: 'MongoDB NoSQL database'}
 ];
 _.each(cmdsToCheck, function(d){
 	var msg = 'locate ' + d.cmd.yellow + ' (' + d.info.grey + ') ... ',

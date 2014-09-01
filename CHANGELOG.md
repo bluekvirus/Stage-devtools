@@ -2,6 +2,7 @@ Change Log
 ==========
 0.1.9 (2014-08-30*)
 * Added middlewares copying (none-forced) in the update cmd.
+* Change git to required in the env cmd. (for bower to work properly)
 
 In progress...
 
