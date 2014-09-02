@@ -9,7 +9,11 @@
 	/////////////////setup/////////////////
 	app.setup({
 		theme: 'project',
-		template: '@main.html'
+		template: '@main.html',
+		navRegion: 'content' 
+
+		//Note: Always set navRegion if using app template here, unless you've merged it(the tpl) with index.html;
+		
 	});
 
 	///////bootstrapping events//////////// - [optional]

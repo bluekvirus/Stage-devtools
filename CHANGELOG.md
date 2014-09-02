@@ -1,14 +1,21 @@
 Change Log
 ==========
-0.1.10 (2014-09-01*)
-
+0.1.11 (2014-09-01*)
+--------------------
 In progress...
 
 * Fix the task code tpl and target to the create cmd;
-* Add report ability to cli.js about command usage;
+* Add report ability to cli.js for counting command usage;
+
+
+0.1.10 (2014-09-02)
+-------------------
+* Fixed auto-reload issue with the serve cmd (+ -a, --autoreload option);
+* Refined main code tpl in the create cmd;
 
 
 0.1.9 (2014-09-01)
+------------------
 * Fixed middlewares copying (none-forced) in the update cmd.
 * Change git to required in the env cmd. (for bower to work properly)
 * Fixed main.js code tpl and target to the create cmd.
