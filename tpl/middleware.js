@@ -11,6 +11,8 @@
  */
 module.exports = function(server){
 
+	var profile = server.get('profile');
+
 	//return function(err, req, res, next){} for error handling middleware.
 	
 	return function(req, res, next){

@@ -2,6 +2,8 @@ Change Log
 ==========
 0.1.11 (2014-09-01*)
 --------------------
+1. Refined router and middleware code tpl;
+
 In progress...
 
 * Fix the task code tpl and target to the create cmd;

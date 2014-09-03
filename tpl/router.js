@@ -18,6 +18,7 @@
  */
 module.exports = function(server){
 
+	var profile = server.get('profile');
 	//Keep this line here! (Do NOT remove it...)
 	var router = server.mount(this);
 	////////////////////////////////////////////
