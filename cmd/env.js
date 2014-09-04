@@ -36,6 +36,7 @@ var cmdsToCheck = [
 	{cmd:'bower', required: true, info: 'Bower JS package manager'}, 
 	{cmd:'npm', required: true, info: 'Nodejs package manager'},
 	{cmd:'gm', required: true, info: 'GraphicsMagick image processor'}, 
+	{cmd:'nodemon', required: true, info: 'Nodejs process auto-reload'},
 	{cmd:'redis-server', required: false, info: 'Redis key-value store'},
 	{cmd:'mongod', required: false, info: 'MongoDB NoSQL database'}
 ];
