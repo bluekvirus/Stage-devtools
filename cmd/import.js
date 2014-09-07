@@ -42,11 +42,11 @@ new targz().extract(pack, env.cwd, function(err){
 	if(err) console.error(err);
 	else {
 		if(!program.override){
-			shell.cp('-R', path.join(env.cwd, 'exported'), env.cwd);
+			shell.cp('-R', path.join(env.cwd, 'exported', '*'), env.cwd);
 			console.log('Use --override if you want to override existing files...'.yellow);
 		}
 		else {
-			shell.cp('-Rf', path.join(env.cwd, 'exported'), env.cwd);
+			shell.cp('-Rf', path.join(env.cwd, 'exported', '*'), env.cwd);
 			shell.rm(pack);
 		}
 		shell.rm('-rf', path.join(env.cwd, 'exported'));

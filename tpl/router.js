@@ -11,7 +11,18 @@
  * /abc/efg => routers/abc/efg.js
  * /sample/sample2-abc => routers/sample/sample2Abc.js 
  * /sample/smaple2_abc => routers/sample/sample2Abc.js
- * 
+ *
+ * Warning
+ * -------
+ * Somehow we suggest you start with the longest uri possible and gradually moving down to the shorter ones.
+ * e.g:
+ * /abc/efg/xyz
+ * /abc/efg
+ * /abc
+ * /xyz
+ * /
+ *
+ * Or else you might get null response ... (Expressjs Bug?)
  * 
  * @author [author]
  * @created [date]

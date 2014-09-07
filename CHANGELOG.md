@@ -1,14 +1,18 @@
 Change Log
 ==========
-0.1.11 (2014-09-01*)
+0.1.12 (2014-09-07*)
+--------------------
+In progress...
+
+* Fix the task code tpl and target in the create cmd;
+* Add report ability to cli.js for counting command usage;
+
+
+0.1.11 (2014-09-07)
 --------------------
 1. Refined router and middleware code tpl;
 2. Added nodemon into env required listing;
-
-In progress...
-
-* Fix the task code tpl and target to the create cmd;
-* Add report ability to cli.js for counting command usage;
+3. Fixed bug in the import cmd (cp routines);
 
 
 0.1.10 (2014-09-02)
