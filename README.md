@@ -38,6 +38,14 @@ stagejs init
 ```
 This will download the latest Stage.js starter kit for you and prepare the development environment.
 
+**Trouble Shoot**: If somehow `bower install` or `npm install` fails during the init process, you can go to the `/implementation` (bower) and `/tools` (npm) folder to run them yourself. (e.g npm needs sudo, or bower got some lock/racing condition...)
+
+###Create main
+```
+stagejs create main
+```
+This will create a new `main.js` from our suggested code template.
+
 ###Create contexts
 ```
 stagejs create context <name>
