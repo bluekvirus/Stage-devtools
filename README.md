@@ -76,7 +76,11 @@ Widgets will also have their mockup template created as.
 ###Create/Refresh theme
 (You can also update existing theme with this cmd)
 ```
+//create, refresh
 stagejs theme <your theme name>
+
+//list available themes currently in your project.
+stagejs theme ls 
 ```
 This will create a new theme for you to develop with, which extends from the *default* theme package. If the theme already exists, it will refresh it. (With css-sprite generation included)
 
