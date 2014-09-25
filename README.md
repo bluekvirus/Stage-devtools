@@ -12,7 +12,7 @@ Requirement
 5. MongoDB v2.6.3+ [optional]
 6. git v1.8+ [optional]
 
-We have prepared a (development environment guide)[ENV.md] for you, please consult it before continue.
+We have prepared a <a href="ENV.md">development environment guide</a> for you, please consult it before continue.
 
 Install
 -------
