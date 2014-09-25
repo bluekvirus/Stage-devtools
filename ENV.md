@@ -20,15 +20,15 @@ FireFox
 Chrome
 IE10+ (optional)
 
-See browser specific features and API compatibilities on [Can I use \_\_\_ ?][http://caniuse.com/]
+See browser specific features and API compatibilities on [Can I use \_\_\_ ?](http://caniuse.com/)
 
 Node.js
 -------
-Please install v0.10.30+ [latest stable][http://nodejs.org/download/]
+Please install v0.10.30+ [latest stable](http://nodejs.org/download/)
 
-If you are on an Unbuntu or Linux distribution, you can [use your package manager to install node][https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager]
+If you are on an Unbuntu or Linux distribution, you can [use your package manager to install node](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
 
-It is highly recommended that you install Node.js through [*NVM*][https://github.com/creationix/nvm] on your development machine, else, you will need to type `sudo npm install` every time instead of `npm install` and the `stagejs init`, `stagejs update` command will not work for you during the `npm` involved steps.
+It is highly recommended that you install Node.js through [*NVM*](https://github.com/creationix/nvm) on your development machine, else, you will need to type `sudo npm install` every time instead of `npm install` and the `stagejs init`, `stagejs update` command will not work for you during the `npm` involved steps.
 
 **Tip**: Use the following `nvm` cmd to set your default Node.js version
 ```
@@ -47,7 +47,7 @@ List of npm packages:
 
 Git
 ---
-You will need git 1.9.1+ on your operating system. Install it from [Git][http://git-scm.com/] or from your package manager in Linux.
+You will need git 1.9.1+ on your operating system. Install it from [Git](http://git-scm.com/) or from your package manager in Linux.
 
 You will need to setup your git account on your local machine before committing changes to your repos:
 ```
@@ -57,9 +57,9 @@ git config --global user.name "Your Name"
 
 GraphicsMagick
 --------------
-This is used for processing images like icons, logos, textures and pictures to be used in your web applications. Our [stage-devtools][https://github.com/bluekvirus/Stage-devtools] use it to create css-sprite for your themes automatically.
+This is used for processing images like icons, logos, textures and pictures to be used in your web applications. Our [stage-devtools](https://github.com/bluekvirus/Stage-devtools) use it to create css-sprite for your themes automatically.
 
-You can install it from here: [GraphicsMagick][http://www.graphicsmagick.org/] 
+You can install it from here: [GraphicsMagick](http://www.graphicsmagick.org/)
 
 Code editor
 -----------
@@ -68,7 +68,7 @@ You don't need an IDE, or at least for web development, just download and instal
 ###Plugins
 You need to install plugins to ease the development process while using Sublime Text. Simply go to the following website to install the package manager for Sublime Text:
 
-[Package Control][https://sublime.wbond.net/installation]
+[Package Control](https://sublime.wbond.net/installation)
 
 List of plugins you need:
 1. Emmet
