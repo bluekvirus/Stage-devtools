@@ -71,6 +71,7 @@ You need to install plugins to ease the development process while using Sublime 
 [Package Control](https://sublime.wbond.net/installation)
 
 List of plugins you need:
+
 1. Emmet
 2. DocBlockr
 3. HTML-CSS-JS Prettify
