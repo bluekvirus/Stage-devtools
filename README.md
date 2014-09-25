@@ -12,6 +12,8 @@ Requirement
 5. MongoDB v2.6.3+ [optional]
 6. git v1.8+ [optional]
 
+We have prepared a (development environment guide)[ENV.md] for you, please consult it before continue.
+
 Install
 -------
 ```
@@ -38,7 +40,31 @@ stagejs init
 ```
 This will download the latest Stage.js starter kit for you and prepare the development environment.
 
-**Trouble Shoot**: If somehow `bower install` or `npm install` fails during the init process, you can go to the `/implementation` (bower) and `/tools` (npm) folder to run them yourself. (e.g npm needs sudo, or bower got some lock/racing condition...)
+**Trouble Shoot A**: If somehow `bower install` or `npm install` fails during the init process, you can go to the `/implementation` (bower) and `/tools` (npm) folder to run them yourself. (e.g npm needs sudo, or bower got some lock/racing condition or network connection problem...)
+
+**Trouble Shoot B**: If the init cmd report something like this:
+```
+...
+npm ERR! code EACCES
+...
+```
+There is a high chance that you've installed your Node.js using the root user. This is a bad way of having Node.js on your development machine (you can do this on a production server though). It is highly recommended that you install Node.js through (*NVM*)[https://github.com/creationix/nvm], else, you will need to type `sudo npm install` every time instead of `npm install` and the `stagejs init`, `stagejs update` command will not work for you during the `npm` involved steps. 
+
+**Uninstall** your Node.js and use *NVM* instead if you are having the npm permission problem. Don't forget to set your **default** `node` version after installing specific Node.js version through `nvm`.
+
+**Last resort**: Use this one if you've removed Node.js and using `npm` through NVM installed node instances
+```
+sudo chown -R `whoami` ~/.npm
+```
+This should clear the permission issue once-n-for-all.
+
+**Trouble Shoot C**: if the init cmd report something like this:
+```
+...
+gyp ERR! ...
+npm WARN optional dep failed, continuing canvas@x.x.x
+```
+You can safely ignore these kind of warning messages during `stagejs init`.
 
 ###Create main
 ```
