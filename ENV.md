@@ -63,7 +63,7 @@ You can install it from here: [GraphicsMagick](http://www.graphicsmagick.org/)
 
 Code editor
 -----------
-You don't need an IDE, or at least for web development, just download and install Sublime Text 2 or 3, the latest the better.
+You don't need an IDE, or at least for web development, just download and install [Sublime Text](http://www.sublimetext.com/3) 2 or 3, the latest the better.
 
 ###Plugins
 You need to install plugins to ease the development process while using Sublime Text. Simply go to the following website to install the package manager for Sublime Text:
