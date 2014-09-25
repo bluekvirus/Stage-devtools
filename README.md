@@ -12,7 +12,7 @@ Requirement
 5. MongoDB v2.6.3+ [optional]
 6. git v1.8+ [optional]
 
-We have prepared a <a href="ENV.md">development environment guide</a> for you, please consult it before continue.
+We have prepared a [development environment guide](ENV.md) for you, please consult it before continue.
 
 Install
 -------
@@ -48,7 +48,7 @@ This will download the latest Stage.js starter kit for you and prepare the devel
 npm ERR! code EACCES
 ...
 ```
-There is a high chance that you've installed your Node.js using the root user. This is a bad way of having Node.js on your development machine (you can do this on a production server though). It is highly recommended that you install Node.js through (*NVM*)[https://github.com/creationix/nvm], else, you will need to type `sudo npm install` every time instead of `npm install` and the `stagejs init`, `stagejs update` command will not work for you during the `npm` involved steps. 
+There is a high chance that you've installed your Node.js using the root user. This is a bad way of having Node.js on your development machine (you can do this on a production server though). It is highly recommended that you install Node.js through [*NVM*](https://github.com/creationix/nvm), else, you will need to type `sudo npm install` every time instead of `npm install` and the `stagejs init`, `stagejs update` command will not work for you during the `npm` involved steps. 
 
 **Uninstall** your Node.js and use *NVM* instead if you are having the npm permission problem. Don't forget to set your **default** `node` version after installing specific Node.js version through `nvm`.
 
