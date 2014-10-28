@@ -3,8 +3,8 @@
 
 	app.view({
 
-		name: 'name of your view',
-		template: '@view/...html',
+		name: '{{{name}}}',
+		template: '@{{{template}}}',
 		//...
 		
 	});

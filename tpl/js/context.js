@@ -1,8 +1,8 @@
 ;(function(app){
 
-	app.context('name of this context', {
+	app.context('{{{name}}}', {
 		
-		template: '@context/...html',
+		template: '@{{{template}}}',
         //..., normal Marionette.Layout options
         
         guard: function(){ // -- [optional]

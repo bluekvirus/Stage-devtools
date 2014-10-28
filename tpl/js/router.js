@@ -24,14 +24,15 @@
  *
  * Or else you might get null response ... (Expressjs Bug?)
  * 
- * @author [author]
- * @created [date]
+ * @author {{author}}
+ * @created {{date}}
  */
 module.exports = function(server){
 
 	var profile = server.get('profile');
 	//Keep this line here! (Do NOT remove it...)
 	var router = server.mount(this);
+	//server.secure(router, /*token1, token2, ...*/);
 	////////////////////////////////////////////
 
 

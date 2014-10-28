@@ -38,7 +38,9 @@ colors = require('colors'),
 path = require('path'),
 fs = require('fs-extra'),
 os = require('os'),
-shell = require('shelljs');
+shell = require('shelljs'),
+mustache = require('mustache');
+_.str = require('underscore.string');
 
 var env = JSON.parse(process.env.stagejs);
 
@@ -115,27 +117,35 @@ console.log('Creating', type.yellow, '=>', target.grey);
 //-d, --dry
 if(program.dry) return;
 
-fs.ensureDirSync(path.dirname(target));
-shell.cp(path.join(env.twd, 'tpl', type + '.js'), target);
+//creating the js target using code template
+//define the mustache tpl data
+var metadata = {
+	name: _.str.classify(name),
+	type: type.toUpperCase(),
+	path: target,
+	author: 'Stagejs.CLI',
+	date: new Date()
+};
 
-//special + html tpl
+//special + html tpl, create related template file first if needs be
 var htmlRequiredTypes = ['main', 'view', 'context', 'editor', 'widget'];
 if(_.contains(htmlRequiredTypes, type)){
-	var tplHTMLName = p.join(path.sep) + '.html';
-	var tplHTMLPath = path.join(env.cwd, env.implementation, 'static', 'template', _.contains(htmlRequiredTypes, p[0])?'':(type === 'main'?'':type), tplHTMLName);
+	var tplHTMLName = path.join(_.contains(htmlRequiredTypes, p[0])?'':(type === 'main'?'':type), p.join(path.sep) + '.html');
+	metadata.template = tplHTMLName;
+	var tplHTMLPath = path.join(env.cwd, env.implementation, 'static', 'template', tplHTMLName);
 	console.log('Creating', 'template'.yellow, '=>', tplHTMLPath.grey);
 	if(!fs.existsSync(tplHTMLPath)){
-		fs.ensureFileSync(tplHTMLPath);
-		fs.writeFileSync(tplHTMLPath, 
-			[
-			'<h2>',
-				'<sup><i class="fa fa-quote-left"></i></sup>',
-				' Stage.js <i class="fa fa-exclamation"></i> ',
-				'<sup><i class="fa fa-quote-right"></i></sup>',
-			'</h2>'
-			].join(os.EOL)
-		);
+		var tplBlueprintPath = path.join(env.twd, 'tpl', 'html', type + '.html');//type specific tpl
+		if(!fs.existsSync(tplBlueprintPath)) tplBlueprintPath = path.join(env.twd, 'tpl', 'html', 'default.html');//use default tpl
+		var tpl = fs.readFileSync(tplBlueprintPath, 'utf-8');
+		fs.outputFileSync(tplHTMLPath, mustache.render(tpl, metadata));
 	}else
 		console.log('create:', 'dest file already exists:', tplHTMLPath);
 }
+
+//load js tpl of specific type
+var tpl = fs.readFileSync(path.join(env.twd, 'tpl', 'js', type + '.js'), 'utf-8');
+fs.outputFileSync(target, mustache.render(tpl, metadata));
+
+
 

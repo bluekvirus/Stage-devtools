@@ -1,15 +1,15 @@
 /**
  * Sample main.js code.
  *
- * @author [author]
- * @created [date]
+ * @author {{author}}
+ * @created {{date}}
  */
 ;(function(app){
 
 	/////////////////setup/////////////////
 	app.setup({
 		theme: 'project',
-		template: '@main.html',
+		template: '@{{{template}}}',
 		navRegion: 'content' 
 
 		//Note: Always set navRegion if using app template here, unless you've merged it(the tpl) with index.html;

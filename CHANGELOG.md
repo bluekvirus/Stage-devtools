@@ -2,6 +2,8 @@ Change Log
 ==========
 0.1.12 (2014-09-07*)
 --------------------
+1. The `create` sub cmd now uses dynamic templates for name and auto-ref (both js and related html);
+
 In progress...
 
 * Fix the task code tpl and target in the create cmd;

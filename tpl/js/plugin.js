@@ -5,7 +5,7 @@
 	/*===============the util/worker functions================*/
 
 	/*===============the plugin================*/
-	$.fn['your plugin name'] = function(options){
+	$.fn['{{{name}}}'] = function(options){
 
 		return this.each(function(index, el){
 			//do stuffz in here...

@@ -1,10 +1,10 @@
 ;(function(app){
 
-	app.widget('name of this widget', function(){
+	app.widget('{{{name}}}', function(){
 
 		var UI = app.view({
 
-			template: '@widget/...html',
+			template: '@{{{template}}}',
 			//...
 
 		});

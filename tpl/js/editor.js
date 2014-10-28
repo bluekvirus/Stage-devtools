@@ -1,10 +1,10 @@
 ;(function(app){
 
-	app.editor('name of this editor', function(){
+	app.editor('{{{name}}}', function(){
 
 		var UI = app.view({
 
-			template: '@editor/...html',
+			template: '@{{{template}}}',
 			//...
 
 		});

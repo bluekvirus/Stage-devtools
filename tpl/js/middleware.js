@@ -6,8 +6,8 @@
  * Since middlewares do require a fixed mounting order, please modify middlewares/inject.js after creating this middleware.
  *
  * 
- * @author [author]
- * @created [date]
+ * @author {{author}}
+ * @created {{date}}
  */
 module.exports = function(server){
 
