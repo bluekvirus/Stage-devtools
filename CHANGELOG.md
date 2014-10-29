@@ -1,13 +1,25 @@
 Change Log
 ==========
-0.1.12 (2014-09-07*)
+0.1.14 (2014-10-28*)
 --------------------
-1. The `create` sub cmd now uses dynamic templates for name and auto-ref (both js and related html);
 
 In progress...
 
 * Fix the task code tpl and target in the create cmd;
 * Add report ability to cli.js for counting command usage;
+
+
+0.1.13 (2014-10-28)
+--------------------
+1. Updated code templates for the `create` cmd;
+2. Refined `create` cmd to support js-index.html auto linking for created js files in addition to js-tpl auto-ref;
+3. Fixed the `-d, --dry` dry run option in the `create` cmd;
+4. Added `-v, --verbose` option for outputing metadata along the process;
+
+
+0.1.12 (2014-10-28)
+--------------------
+1. The `create` cmd now uses dynamic templates for name and auto-ref (both js and related html);
 
 
 0.1.11 (2014-09-07)

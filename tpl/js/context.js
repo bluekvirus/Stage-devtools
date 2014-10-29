@@ -1,6 +1,12 @@
+/**
+ * Sample {{type}} script.
+ *
+ * @author {{author}}
+ * @created {{date}}
+ */
 ;(function(app){
 
-	app.context('{{{name}}}', {
+	app.context('{{{title}}}', {
 		
 		template: '@{{{template}}}',
         //..., normal Marionette.Layout options

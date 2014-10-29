@@ -39,7 +39,8 @@ path = require('path'),
 fs = require('fs-extra'),
 os = require('os'),
 shell = require('shelljs'),
-mustache = require('mustache');
+mustache = require('mustache'),
+cheerio = require('cheerio');
 _.str = require('underscore.string');
 
 var env = JSON.parse(process.env.stagejs);
@@ -52,44 +53,56 @@ if(!env['stagejs-version']){
 program
 	.usage('[options] <type> <name>')
 	.version('0.1.0')
+	.option('-i, --index <*.html>', 'The .html that the produced js will be attaching to, default on index.html', 'index.html')
 	.option('-d, --dry', 'Only output the target file type and path instead of actually creating it.')
 	.option('-l, --list', 'List possible types of code you can create using this cmd.')
+	.option('-v, --verbose', 'Output the metadata gathered during the generating process as well.')
 	.parse(process.argv);
 
-var type = program.args[0], name = program.args[1], base;
-if(type === 'main') name = name || 'main.js';
+var type = program.args[0], name = program.args[1];
+if(type === 'main') name = name || 'main';
 var jsTargets = {
 	client: {
 		types: ['main', 'view', 'context', 'editor', 'validator', 'widget', 'plugin'],
-		base: path.join(env.cwd, env.implementation, 'js'),
+		base: path.join(env.cwd, env.implementation),
+		folder: 'js'
 	},
 	server: {
 		types: ['router', 'middleware'],
-		base: path.join(env.cwd, env.tools, 'devserver')
+		base: path.join(env.cwd, env.tools),
+		folder: 'devserver'
 	}
 };
 
-var p;
 function resolveToJSPath(type, name){
+	var found = false;
+	//figure out which side this script type is on
 	for(var x in jsTargets){
 		if(_.contains(jsTargets[x].types, type)){
-			base = jsTargets[x].base;
+			found = true;
 			break;
 		}
 	}
-	if(!base) return;
+	if(!found) return;
 
-	p = name.split('.');
+	var p = name.split('.'); //target js name segments array without .js, used again later for outputing related html template.
 	if(p[p.length-1] === 'js') p.pop();
+
+	var jsFullPath;
 	if(_.contains(jsTargets[x].types, p[0])){
-		base = path.join(base, p.join(path.sep));
+		jsFullPath = path.join(jsTargets[x].base, jsTargets[x].folder, p.join(path.sep));
 	}else {
-		base = path.join(base, (type === 'main'?'':type) + (x === 'client'?'':'s'), p.join(path.sep));
+		jsFullPath = path.join(jsTargets[x].base, jsTargets[x].folder, (type === 'main'?'':type) + (x === 'client'?'':'s'), p.join(path.sep));
 	}
 	
-	if(/\.js$/.test(base))
-		return base;
-	return base + '.js';
+	if(!/\.js$/.test(jsFullPath)) jsFullPath += '.js';
+	return {
+		base: jsTargets[x].base,
+		folder: jsTargets[x].folder,
+		side: x,
+		path: jsFullPath,
+		nameSegments: p
+	};
 }
 
 //-l, --list
@@ -113,39 +126,65 @@ if(!target) {
 	return;
 }
 
-console.log('Creating', type.yellow, '=>', target.grey);
-//-d, --dry
-if(program.dry) return;
+if(program.dry) console.log('==========Dry Run: no actual file changes occur=========='.grey);
 
 //creating the js target using code template
-//define the mustache tpl data
+//1.define the mustache tpl data
 var metadata = {
-	name: _.str.classify(name),
+	name: name,
+	title: _.str.classify(name.split('.js')[0]),
 	type: type.toUpperCase(),
-	path: target,
+	path: {
+		relative: target.path.replace(target.base + path.sep, ''),
+		full: target.path,
+	},
 	author: 'Stagejs.CLI',
 	date: new Date()
 };
 
-//special + html tpl, create related template file first if needs be
+if(program.verbose) console.log('Information', metadata);
+
+//2.special + html tpl, create related template file first if needs be
 var htmlRequiredTypes = ['main', 'view', 'context', 'editor', 'widget'];
 if(_.contains(htmlRequiredTypes, type)){
-	var tplHTMLName = path.join(_.contains(htmlRequiredTypes, p[0])?'':(type === 'main'?'':type), p.join(path.sep) + '.html');
+	var tplHTMLName = path.join(_.contains(htmlRequiredTypes, target.nameSegments[0])?'':(type === 'main'?'':type), target.nameSegments.join(path.sep) + '.html');
 	metadata.template = tplHTMLName;
 	var tplHTMLPath = path.join(env.cwd, env.implementation, 'static', 'template', tplHTMLName);
-	console.log('Creating', 'template'.yellow, '=>', tplHTMLPath.grey);
+	
 	if(!fs.existsSync(tplHTMLPath)){
 		var tplBlueprintPath = path.join(env.twd, 'tpl', 'html', type + '.html');//type specific tpl
 		if(!fs.existsSync(tplBlueprintPath)) tplBlueprintPath = path.join(env.twd, 'tpl', 'html', 'default.html');//use default tpl
 		var tpl = fs.readFileSync(tplBlueprintPath, 'utf-8');
-		fs.outputFileSync(tplHTMLPath, mustache.render(tpl, metadata));
+		console.log('Creating', 'template'.yellow, '=>', tplHTMLPath.grey);
+		if(!program.dry) fs.outputFileSync(tplHTMLPath, mustache.render(tpl, metadata));
 	}else
-		console.log('create:', 'dest file already exists:', tplHTMLPath);
+		console.log('create:', 'dest file already exists:'.red, tplHTMLPath);
 }
 
-//load js tpl of specific type
-var tpl = fs.readFileSync(path.join(env.twd, 'tpl', 'js', type + '.js'), 'utf-8');
-fs.outputFileSync(target, mustache.render(tpl, metadata));
+//3.load js tpl of specific type
+if(!fs.existsSync(target.path)){
+	var tpl = fs.readFileSync(path.join(env.twd, 'tpl', 'js', type + '.js'), 'utf-8');
+	console.log('Creating', type.yellow, '=>', target.path.grey);
+	if(!program.dry) fs.outputFileSync(target.path, mustache.render(tpl, metadata));
+}else
+	console.log('create:', 'dest file already exists:'.red, target.path);
 
+//4.include newly created js into -i indicated loader html (e.g the index.html)
+if(target.side === 'client'){
+	var indexFile = path.join(target.base, program.index);
+	if(!fs.existsSync(indexFile)) {
+		console.log('append:', 'can not find:'.red, indexFile);
+		return;
+	}
 
+	var indexHTML = fs.readFileSync(indexFile, 'utf-8');
+	var $ = cheerio.load(indexHTML);
+	if($('script[src="' + metadata.path.relative + '"]').length > 0) {
+		console.log('append:', 'already in place:'.red, metadata.path.relative, '@', program.index);
+		return;
+	}
+	$('body').append('\t<script src="' + metadata.path.relative + '"></script>\n');
+	if(!program.dry) fs.outputFileSync(indexFile, $.html());
+	console.log('Appended to', program.index.yellow, '@', indexFile.grey);
+}
 

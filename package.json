@@ -1,6 +1,6 @@
 {
   "name": "stage-devtools",
-  "version": "0.1.11",
+  "version": "0.1.13",
   "description": "Devtools for convenient Stage.js development.",
   "main": "index.js",
   "bin": {
@@ -31,6 +31,7 @@
     "monitor"
   ],
   "dependencies": {
+    "cheerio": "^0.17.0",
     "colors": "^0.6.2",
     "commander": "^2.3.0",
     "fs-extra": "^0.11.0",

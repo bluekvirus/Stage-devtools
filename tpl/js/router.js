@@ -30,17 +30,17 @@
 module.exports = function(server){
 
 	var profile = server.get('profile');
-	//Keep this line here! (Do NOT remove it...)
 	var router = server.mount(this);
-	//server.secure(router, /*token1, token2, ...*/);
+	//server.secure(router, /*token1, token2, ...*/); -- see util/secure.js
+	
 	////////////////////////////////////////////
 
 
 	//get '/'
-	router.get('/', function(req, res, next){
-		res.json({stagejs: '!'});
+	router.get('/', /*router.token(t1, t2, ...)*/ function(req, res, next){
+		res.json({stagejs: '!', generated: '{{date}}'});
 	});
 
-	//head, post, put, delete...
+	//post, put, delete (yes, you can also use head and options methods)
 
 };

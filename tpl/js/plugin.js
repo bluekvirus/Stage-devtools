@@ -1,3 +1,9 @@
+/**
+ * Sample {{type}} script.
+ *
+ * @author {{author}}
+ * @created {{date}}
+ */
 ;(function(app, $){
 
 	/*===============preparations======================*/

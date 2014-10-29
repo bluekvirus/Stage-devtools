@@ -1,5 +1,5 @@
 /**
- * Sample main.js code.
+ * Sample {{type}} script.
  *
  * @author {{author}}
  * @created {{date}}

@@ -1,6 +1,12 @@
+/**
+ * Sample {{type}} script.
+ *
+ * @author {{author}}
+ * @created {{date}}
+ */
 ;(function(app){
 
-	app.widget('{{{name}}}', function(){
+	app.widget('{{{title}}}', function(){
 
 		var UI = app.view({
 
