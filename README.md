@@ -1,5 +1,7 @@
-Stage-devtools    v0.1.x
+Stage-devtools
 ========================
+<img src="http://img.shields.io/npm/v/stage-devtools.svg?style=flat" alt="DevTools Version"></img> <img src="http://img.shields.io/npm/dm/stage-devtools.svg?style=flat" alt="DevTools Download Stat">
+
 Devtools for convenient Stage.js development.
 
 
@@ -211,7 +213,7 @@ You will need to add an issue then make a pull-request to submit your modificati
 
 Distribute
 ----------
-Update `README.md`, `CHANGELOG.md` and `package.json` before releasing new versions through `npm publish`.
+Update `README.md`(optional), `CHANGELOG.md` and `package.json` before releasing new versions through `npm publish`.
 
 
 License
