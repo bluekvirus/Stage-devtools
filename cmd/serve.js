@@ -20,6 +20,7 @@ if(!env['stagejs-version']){
 }
 
 program
+	.usage('[options] or [port]')
 	.version('0.1.0')
 	.option('-a, --autoreload', 'Enable auto-reload through nodemon')
 	.option('-P, --port [number]', 'Override which on port the devserver will be running', '')

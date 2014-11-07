@@ -4,7 +4,7 @@ Change Log
 --------------------
 
 In progress...
-
+* Adding the `lib` command with `use/unuse`;
 * Fix the task code tpl and target in the create cmd;
 * Add report ability to cli.js for counting command usage;
 

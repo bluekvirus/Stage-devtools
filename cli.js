@@ -50,10 +50,10 @@ var args = process.argv.slice(1);
 if(args[0] === __filename || /stagejs$/.test(args[0]))
 	args.shift();
 //grab cmd
-var cmd = args.shift(),
+var cmd = args.shift() || '-h',
 cmdFile = path.join(env.twd, 'cmd', cmd + '.js');
 
-if(cmd === '-v' || cmd === '--version'){
+if(cmd === '-V' || cmd === '--version'){
 	console.log(packageInfo.version.yellow);
 	process.exit(0);
 }
@@ -61,6 +61,7 @@ if(cmd === '-h' || cmd === '--help'){
 	console.log(); //+newline
 	console.log('\tExamples:\t', 'stagejs ' + '<cmd>'.yellow + ' [options]');
 	console.log('\tRead help:\t', 'stagejs ' + '<cmd>'.yellow + ' -h, --help');
+	console.log('\tVersion:\t', 'stagejs -v, --version');
 	console.log('');
 	var ac = fs.readdirSync(path.join(env.twd, 'cmd'));
 	var pattern = /\.js$/;
@@ -72,7 +73,8 @@ if(cmd === '-h' || cmd === '--help'){
 	console.log(); //+newline
 	process.exit(0);
 }
-if(!cmd || !fs.existsSync(cmdFile)) {
+
+if(!fs.existsSync(cmdFile)) {
 	console.error('Invalid Command:'.red, cmd);
 	process.exit(1);
 }

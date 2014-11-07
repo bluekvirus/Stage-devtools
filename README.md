@@ -117,6 +117,25 @@ This will create a new theme for you to develop with, which extends from the *de
 **Tip**: use `-h` to see more options with this command.
 
 
+###Manage 3rd-party libraries
+If you want to use 3rd-party libraries not bundled with the framework distribution, you can use the `stagejs lib` command: 
+```
+//update, install/uninstall and other normal `bower` commands.
+stagejs lib update [lib, ...]
+stagejs lib install [lib, ...]
+stagejs lib uninstall <lib, ...>
+stagejs lib ls
+
+//use, unuse a lib in your project
+stagejs lib use <lib> [js file]
+stagejs lib unuse <lib> [js file]
+
+```
+Without the `use`, `unuse` sub-commands the `lib` command works just like the `bower` cli.
+
+The `use`, `unuse` will manipulate the `.html` file pointed by the `-i, --index` option, adding/removing 3rd-party library files to the `<script>` tags.
+
+
 ###Update project
 ```
 stagejs update [-e, --edge] [-p, --packages]
