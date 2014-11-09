@@ -61,7 +61,7 @@ if(cmd === '-h' || cmd === '--help'){
 	console.log(); //+newline
 	console.log('\tExamples:\t', 'stagejs ' + '<cmd>'.yellow + ' [options]');
 	console.log('\tRead help:\t', 'stagejs ' + '<cmd>'.yellow + ' -h, --help');
-	console.log('\tVersion:\t', 'stagejs -v, --version');
+	console.log('\tVersion:\t', 'stagejs -V, --version');
 	console.log('');
 	var ac = fs.readdirSync(path.join(env.twd, 'cmd'));
 	var pattern = /\.js$/;
