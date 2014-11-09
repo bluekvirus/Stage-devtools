@@ -1,12 +1,17 @@
 Change Log
 ==========
-0.1.14 (2014-10-28*)
---------------------
-
+0.2.1 (2014-11-09*)
+-------------------
 In progress...
-* Adding the `lib` command with `use/unuse`;
 * Fix the task code tpl and target in the create cmd;
 * Add report ability to cli.js for counting command usage;
+
+
+0.2.0 (2014-11-09)
+--------------------
+* Added the `lib` command with fallback ability to `bower`;
+* Added the `lib` command with `use/unuse` sub-cmd;
+* Initially planned features completed;
 
 
 0.1.13 (2014-10-28)
