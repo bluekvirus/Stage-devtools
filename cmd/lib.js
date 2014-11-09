@@ -34,7 +34,7 @@ var cmd = program.args[0];
 if(!_.contains(['use', 'unuse'], cmd) && cmd){ //pass along to bower
 	console.log('using bower...'.yellow);
 	shell.cd(path.join(env.cwd, env.implementation));
-	shell.exec('bower ' + process.argv.slice(2).join(' '));
+	return shell.exec('bower ' + process.argv.slice(2).join(' '));
 }
 
 var library = program.args[1];
