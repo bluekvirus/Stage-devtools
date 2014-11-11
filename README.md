@@ -9,10 +9,9 @@ Requirement
 -----------
 1. Nodejs v0.10.26+
 2. Bower v1.3.1+
-3. GraphicsMagick v1.3.19+
-4. Redis v2.8.13+ [optional]
-5. MongoDB v2.6.3+ [optional]
-6. git v1.8+ [optional]
+3. Git v1.8+
+4. GraphicsMagick v1.3.19+
+
 
 We have prepared a [development environment guide](ENV.md) for you, please consult it before continue.
 
@@ -23,7 +22,7 @@ npm install -g stage-devtools
 ```
 This will give you a globally available `stagejs` command in cli. You can check it with the version and help options on:
 ```
-stagejs -v
+stagejs -V
 stagejs -h, --help
 ```
 
