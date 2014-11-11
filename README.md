@@ -127,12 +127,14 @@ stagejs lib ls
 
 //use, unuse a lib in your project
 stagejs lib use <lib> [js file]
-stagejs lib unuse <lib> [js file]
+stagejs lib unuse <lib>
 
 ```
 Without the `use`, `unuse` sub-commands the `lib` command works just like the `bower` cli.
 
 The `use`, `unuse` will manipulate the `.html` file pointed by the `-i, --index` option, adding/removing 3rd-party library files to the `<script>` tags.
+
+**Tip**: `stagejs lib use <lib>` will automatically consult the library's `bower.json` metadata to figure out which javascript is the main one and use that for you. If the command replies with that it can't find the main javascript then you can specify the relative path of the javascript you want in the library through the 2nd parameter.
 
 
 ###Update project
