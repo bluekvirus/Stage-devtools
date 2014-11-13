@@ -139,11 +139,11 @@ The `use`, `unuse` will manipulate the `.html` file pointed by the `-i, --index`
 
 ###Update project
 ```
-stagejs update [-e, --edge] [-p, --packages]
+stagejs update [-e, --edge]
 ```
-This will update `bower.json` and then update the bower managed packages. It will also update the *default* theme package and tools. If you put `--edge` option into the command, it will also fetch and replace `stage.js`, `stage.min.js` and `dependencies.min.js` with the latest edge build from the Stage.js project repository.
+This will update `bower.json` and then maintain the bower managed packages (it will do the same to npm packages). It will also update the *default* theme package and tools. If you put `--edge` option into the command, it will also fetch and replace `stage.js`, `stage.min.js` and `dependencies.min.js` with the latest edge build from the Stage.js project repository.
 
-By default, the `update` command will only install missing libraries & packages indicated by the updated `bower.json` and `package.json`. If you want to fully update all of the installed libraries & packages in addition, please indicate this using the `--packages` flag.
+By default, the `update` command will only install missing libraries & packages indicated by the updated `bower.json` and `package.json`. (Yes if the version number of a package changes, the install process will update it)
 
 ###Build project
 (single config file - dist.js, doesn't require app server to be running)

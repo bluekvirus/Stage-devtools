@@ -25,7 +25,6 @@ if(!env['stagejs-version']){
 program
 	.version('0.1.0')
 	.option('-e, --edge', 'Also update Stage.js framework to its edge version')
-	.option('-p, --packages', 'Fully update bower and npm packages as well')
 	.parse(process.argv);
 
 //0. clean up
@@ -72,28 +71,19 @@ download([env.repo, env.kit].join('/'), tmpFolder, true, function(tmpFolder){
 	//merge/update package.json
 	mergeUpdateJSON(path.join(toolsFolder, 'package.json'), path.join(tmpFolder, 'kit', 'tools', 'package.json'));
 
-	//bower update, npm update
+	//bower install, npm install
 	shell.cd(implFolder);
-	if(program.packages){
-		console.log('Updating all Javascript libraries ...'.yellow);
-		shell.exec('bower update');
-	}
-	else{
+
 		console.log('Installing missing Javascript libraries ...'.yellow);
 		shell.exec('bower install');
-	}
+
 	shell.cd('..');
 	shell.cd(toolsFolder);
-	if(program.packages){
-		console.log('Updating all Nodejs libraries ...'.yellow);
-		shell.exec('npm update');
-	}else{
+
 		console.log('Installing missing Nodejs libraries ...'.yellow);
 		shell.exec('npm install');
-	}
 
-	
-	//--edge
+	//--edge (use stagejs edge build)
 	//2. grab edge build .gz (into tmpFolder/framework) 
 	if(program.edge){
 		download([env.repo, env.edge].join('/'), tmpFolder, true, function(tmpFolder){

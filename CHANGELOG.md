@@ -3,6 +3,7 @@ Change Log
 0.2.1 (2014-11-09*)
 -------------------
 * `lib` cmd now stops completely after falling back to `bower`;
+* removed `-p` option from the `update` cmd; 
 
 In progress...
 * Fix the task code tpl and target in the create cmd;
