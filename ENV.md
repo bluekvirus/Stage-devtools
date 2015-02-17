@@ -107,9 +107,11 @@ Appendix A
 
 **Tip**: Use the *proxy* settings in the *devserver* profile to forward API requests to other backend application server implementation (Python/C or even Java) of your choice.  
 
-Stay away from Java, C++ and even PHP when implementing backends, these languages should not be used in modern web development and system programming, unless you want a hard to maintain solution. OOP (is-a, has-a programming) is for system GUIs/Graphics that need to be built from scratch (e.g UI -> EventEmitter -> Clickables -> Buttons, or EventEmitter -> Agent -> Character). If you consider/build data-services and daemons in an full OOP way, you are only complicating the problem. Why?
+Stay away from Java, C++ and even PHP when implementing backends, these languages should not be used in modern web development, unless you want a hard to maintain solution. OOP (is-a, has-a programming) is for GUIs/Graphics Engine that need to be built from scratch (e.g UI -> EventEmitter -> Clickables -> Buttons, or EventEmitter -> Agent -> Character). If you consider/build data-services and daemons in an full OOP way, you are only complicating the problem. Why?
 
 >Remember, abstractions should simplify the real world instead of resembling it, keeping track of everything using Classes with hierarchies in addition to Objects and Interfaces will simply give you another dimension of bookkeeping. Anything distracts you from the solving the core problem is bad.
+
+Three most important objects for implementing web services would most likely be Router, (OR)Models and Tasks. Even these can be easily implemented without using Classes. The server side needs objects yes, but it is more about the pipe, taps/filters and metadata/config/managers than a heap of contracts that link with each other in addition to the data flow routes.
 
 Appendix B
 ----------
