@@ -41,6 +41,7 @@ You will need some packages to be installed through `npm` globally:
 [sudo] npm -g install <your package name>
 ```
 List of npm packages:
+
 0. forever
 1. nodemon
 2. jshint
