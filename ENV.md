@@ -9,7 +9,7 @@ It is suggested that you install the latest Unbuntu* or Linux distribution or to
 
 Whenever we do programming, it will be based on a computer system. Most of the time, by saying computer system, we are referring to the generalized operating system that controls the underlying computing system while bridging all the gaps between different hardwares. So always choose your OS before you start programming.
 
-For web programming, your choices will only affect the server side, since the client side will be rendered by the user browsers. The Web APIs you use in JavaScript will be bridged by some general libraries like [jQuery](http://api.jquery.com/) on different browsers.
+For web programming, your choices will only affect the server side, since the client side will be rendered by the user browsers. The Web APIs you use in JavaScript will be bridged by some general libraries like [jQuery](http://api.jquery.com/) (for DOM APIs) and [others](https://developer.mozilla.org/en-US/docs/WebAPI) on different browsers.
 
 *14.04 LTS at the time of writing this doc. 
 
@@ -41,6 +41,7 @@ You will need some packages to be installed through `npm` globally:
 [sudo] npm -g install <your package name>
 ```
 List of npm packages:
+0. forever
 1. nodemon
 2. jshint
 3. stage-devtools
@@ -92,7 +93,10 @@ Appendix A
 1. MongoDB
 2. PostgreSQL
 3. Redis
-4. Nginx
+4. RabbitMQ
+5. Nginx
+6. [ElasticSearch]
+
 
 ###Optional programming languages
 1. Python 2/3*
@@ -108,8 +112,8 @@ Stay away from Java, C++ and even PHP when implementing backends, these language
 
 Appendix B
 ----------
-###Optional utilities
-1. SmartGit/Giggle(+git cli)
-2. RAR
-3. Skype
-4. iBus (Language Support, Input Methods/Text Entry Settingz)
+###Optional cloud utilities
+0. Github
+1. [Circle.ci](https://circleci.com/)
+2. [Waffle.io](https://waffle.io/)
+3. [Kanban Flow](https://waffle.io/)
