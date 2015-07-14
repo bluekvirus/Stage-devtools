@@ -11,7 +11,9 @@ Whenever we do programming, it will be based on a computer system. Most of the t
 
 For web programming, your choices will only affect the server side, since the client side will be rendered by the user browsers. The Web APIs you use in JavaScript will be bridged by some general libraries like [jQuery](http://api.jquery.com/) (for DOM APIs) and [others](https://developer.mozilla.org/en-US/docs/WebAPI) on different browsers.
 
-*14.04 LTS at the time of writing this doc. 
+*14.04 LTS at the time of writing this doc.
+
+A [Virtual Machine](https://github.com/bluekvirus/vm-webdev) has been prepared for you to ease the initial setup of your development environment.
 
 Browsers
 --------
@@ -107,11 +109,11 @@ Appendix A
 
 **Tip**: Use the *proxy* settings in the *devserver* profile to forward API requests to other backend application server implementation (Python/C or even Java) of your choice.  
 
-Stay away from Java, C++ and even PHP when implementing backends, these languages should not be used in modern web development, unless you want a hard to maintain solution. OOP (is-a, has-a programming) is for GUIs/Graphics Engine that need to be built from scratch (e.g UI -> EventEmitter -> Clickables -> Buttons, or EventEmitter -> Agent -> Character). If you consider/build data-services and daemons in an full OOP way, you are only complicating the problem. Why?
+Stay away from *pure* OOP like Java/C++ when implementing backends, these languages complicate the picture when used in modern web development, and increase your maintenance cost. OOP (is-a, has-a programming) is for Actor based applications (a Game Engine, a Web Browser, a Desktop Environment...etc) that usually need to be built from scratch with the same good attributes reused again and again down in the inheritance chain (e.g EventEmitter -> Clickables -> Buttons, or EventEmitter -> Agent -> Character). If you consider building data-services and daemons in an full OOP way, you are only clouding the problem. Why?
 
->Remember, abstractions should simplify the real world instead of resembling it, keeping track of everything using Classes with hierarchies in addition to Objects and Interfaces will simply give you another dimension of bookkeeping. Anything distracts you from the solving the core problem is bad.
+>Remember, abstractions should simplify the real world instead of resembling it, keeping track of everything using Classes with hierarchies in addition to Objects and Interfaces will simply give you another dimension of bookkeeping. It is helpful to see reusable objects and their blueprints being managed separately, but when everything gets defined once and only used once, or in the worse case the Classes become just names with no reusable methods at all, the OO layer becomes an mental burden. Anything distracts you from the solving the core problem is bad.
 
-Three most important objects for implementing web services would most likely be Router, (OR)Models and Tasks. Even these can be easily implemented without using Classes. The server side needs objects yes, but it is more about the pipe, taps/filters and metadata/config/managers than a heap of contracts that link with each other in addition to the data flow routes.
+Four most important objects for implementing web services would be *Router*, *Middlewares/Filters*, *Models* and *Tasks*. Whether or not should they be implemented using Classes is entirely up to you. But be warned, the server side is more about the request processing pipeline, taps/filters and metadata/config managers than a heap of contracts that contains nothing but the ability to override themselves. When strict blueprints are far less useful than the actual objects, pure OOP fails. This is when you realize how Javascript and Python wins.
 
 Appendix B
 ----------
