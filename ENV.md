@@ -16,14 +16,6 @@ For web programming, your choices will only affect the server side, since the cl
 
 *14.04 LTS at the time of writing this doc.
 
-Browsers
---------
-You should install the following browsers before you move on:
-FireFox
-Chrome
-IE10+ (optional)
-
-See browser specific features and API compatibilities on [Can I use \_\_\_ ?](http://caniuse.com/)
 
 Node.js
 -------
@@ -50,6 +42,7 @@ List of npm packages:
 2. jshint
 3. stage-devtools
 
+
 Git
 ---
 You will need git 1.9.1+ on your operating system. Install it from [Git](http://git-scm.com/) or from your package manager in Linux.
@@ -60,11 +53,13 @@ git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
 
+
 GraphicsMagick
 --------------
 This is used for processing images like icons, logos, textures and pictures to be used in your web applications. Our [stage-devtools](https://github.com/bluekvirus/Stage-devtools) use it to create css-sprite for your themes automatically.
 
 You can install it from here: [GraphicsMagick](http://www.graphicsmagick.org/)
+
 
 Code editor
 -----------
@@ -90,6 +85,17 @@ List of plugins you need:
 ```
 [sudo] npm -g install jshint 
 ```
+
+
+Browsers
+--------
+You should install the following browsers before you move on:
+FireFox
+Chrome
+IE10+ (optional)
+
+See browser specific features and API compatibilities on [Can I use \_\_\_ ?](http://caniuse.com/)
+
 
 Appendix A
 ----------
