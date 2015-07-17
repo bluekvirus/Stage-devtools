@@ -92,6 +92,8 @@ List of plugins you need:
 
 Appendix A
 ----------
+These optional components are included in the [Virtual Machine](https://github.com/bluekvirus/vm-webdev) metioned earlier in the document.
+
 ###Optional programs
 1. MongoDB
 2. PostgreSQL
