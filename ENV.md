@@ -3,6 +3,9 @@ Setup your web development environment
 @version 1.0.1
 @author Tim Liu (zhiyuanliu@fortinet.com)
 
+A [Virtual Machine](https://github.com/bluekvirus/vm-webdev) has been prepared for you to ease the initial setup of your development environment.
+
+
 Operating System
 ----------------
 It is suggested that you install the latest Unbuntu* or Linux distribution or to use a Windows 7+.
@@ -12,8 +15,6 @@ Whenever we do programming, it will be based on a computer system. Most of the t
 For web programming, your choices will only affect the server side, since the client side will be rendered by the user browsers. The Web APIs you use in JavaScript will be bridged by some general libraries like [jQuery](http://api.jquery.com/) (for DOM APIs) and [others](https://developer.mozilla.org/en-US/docs/WebAPI) on different browsers.
 
 *14.04 LTS at the time of writing this doc.
-
-A [Virtual Machine](https://github.com/bluekvirus/vm-webdev) has been prepared for you to ease the initial setup of your development environment.
 
 Browsers
 --------
