@@ -214,13 +214,21 @@ For it to take effect, simply put it under the current working directory where y
 
 Contribute
 ----------
-Clone the project then run:
+Clone the project:
+```
+git clone https://github.com/bluekvirus/Stage-devtools.git
+```
+Create your own patch/contrib branch:
+```
+git checkout -b <your patch/contrib branch name>
+```
+Install node packages required for development:
 ```
 npm install
 ```
 Add or modify commands in `/cmd` folder and have them tested through:
 ```
-node Stage-devtools/cli.js [cmd]
+node [Stage-devtools folder]/cli.js [cmd]
 ```
 So, a commmand named `abc.js` under `/cmd` can be invoked like this:
 ```
@@ -228,11 +236,32 @@ node [Stage-devtools folder]/cli.js abc [rest of the arguments]
 ```
 Make sure you consult the `env.js` and `init.js` before adding new commands.
 
+###Live Tests
+```
+mkdir TestProject
+cd TestProject
+node [Stage-devtools folder]/cli.js [cmd] <arguments>
+```
+
+For example, if your development folder is like this,
+
+* /Stage-devtools
+* /TestProject
+
+Then the live test line above becomes
+```
+cd TestProject
+node ../Stage-devtools/cli.js [cmd] <arguments>
+```
+Make sure you test the commands in the `/TestProject` before committing your changes. 
+
 You will need to add an issue then make a pull-request to submit your modifications.
 
 
 Distribute
 ----------
+(You do NOT need to do this if contributing, I'll take care of this after getting the pull requests)
+
 Update `README.md`(optional), `CHANGELOG.md` and `package.json` before releasing new versions through `npm publish`.
 
 

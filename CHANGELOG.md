@@ -1,20 +1,28 @@
 Change Log
 ==========
-0.2.1 (2014-11-09*)
+0.3.0 (2015-08-21*)
 -------------------
-* `lib` cmd now stops completely after falling back to `bower`;
-* removed `-p` option from the `update` cmd; 
-
 In progress...
-* Fix the task code tpl and target in the create cmd;
-* Add report ability to cli.js for counting command usage;
+* add code tpl for background tasks in the create cmd;
+
+
+0.2.2 (2015-08-21)
+------------------
+1. Refined code templates for view & context.
+2. Refined name-to-path mapping in the create cmd (to support 1.8 view injection);
+
+
+0.2.1 (2014-11-09)
+-------------------
+1. `lib` cmd now stops completely after falling back to `bower`;
+2. removed `-p` option from the `update` cmd; 
 
 
 0.2.0 (2014-11-09)
 --------------------
-* Added the `lib` command with fallback ability to `bower`;
-* Added the `lib` command with `use/unuse` sub-cmd;
-* Initially planned features completed;
+1. Added the `lib` command with fallback ability to `bower`;
+2. Added the `lib` command with `use/unuse` sub-cmd;
+3. Initially planned features completed;
 
 
 0.1.13 (2014-10-28)
@@ -39,55 +47,55 @@ In progress...
 
 0.1.10 (2014-09-02)
 -------------------
-* Fixed auto-reload issue with the serve cmd (+ -a, --autoreload option);
-* Refined main code tpl in the create cmd;
+1. Fixed auto-reload issue with the serve cmd (+ -a, --autoreload option);
+2. Refined main code tpl in the create cmd;
 
 
 0.1.9 (2014-09-01)
 ------------------
-* Fixed middlewares copying (none-forced) in the update cmd.
-* Change git to required in the env cmd. (for bower to work properly)
-* Fixed main.js code tpl and target to the create cmd.
-* Refined context code tpl.
-* Fixed port arg short-cut in the serve cmd.
-* Fixed template creation routine/log in the create cmd.
+1. Fixed middlewares copying (none-forced) in the update cmd.
+2. Change git to required in the env cmd. (for bower to work properly)
+3. Fixed main.js code tpl and target to the create cmd.
+4. Refined context code tpl.
+5. Fixed port arg short-cut in the serve cmd.
+6. Fixed template creation routine/log in the create cmd.
 
 
 0.1.8 (2014-08-30)
 -------------------
-* Reduced error detection in the `init` cmd.
-* Refined middleware, router code templates.
+1. Reduced error detection in the `init` cmd.
+2. Refined middleware, router code templates.
 
 
 0.1.7 (2014-08-29)
 ------------------
-* Refined build cmd output relative path;
-* Refined env cmd, +more info;
-* Refined cmd mount script(cli.js), +help & newlines;
-* Refined init cmd, +git support, +error detection;
-* Fixed export command; (linked with build + config.export.js)
-* Fixed import command;
-* Fixed create command;
+1. Refined build cmd output relative path;
+2. Refined env cmd, +more info;
+3. Refined cmd mount script(cli.js), +help & newlines;
+4. Refined init cmd, +git support, +error detection;
+5. Fixed export command; (linked with build + config.export.js)
+6. Fixed import command;
+7. Fixed create command;
 
 
 0.1.6 (2014-08-22)
 ------------------
-* Fixed theme command;
-* Fixed build command;
-* Fixed serve command;
+1. Fixed theme command;
+2. Fixed build command;
+3. Fixed serve command;
 
 
 0.1.5 (2014-08-20)
 ------------------
-Refined env and init command;
-Fixed update command;
-Fixed bin setting in package.json;
+1. Refined env and init command;
+2. Fixed update command;
+3. Fixed bin setting in package.json;
 
 
 0.1.1 (2014-08-18)
 ------------------
-Fixed env command;
-Fixed init command;
+1. Fixed env command;
+2. Fixed init command;
 
 
 0.1.0 (2014-08-18)

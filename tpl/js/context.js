@@ -9,7 +9,7 @@
 	app.context('{{{title}}}', {
 		
 		template: '@{{{template}}}',
-        //..., normal Marionette.Layout options
+        //..., normal View options
         
         guard: function(){ // -- [optional]
             //return error to cancel navigation;

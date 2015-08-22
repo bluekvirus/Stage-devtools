@@ -53,7 +53,7 @@ if(!env['stagejs-version']){
 program
 	.usage('[options] <type> <name>')
 	.version('0.1.0')
-	.option('-i, --index <*.html>', 'The .html that the produced js will be attaching to, default on index.html', 'index.html')
+	.option('-i, --index <*.html>', 'The .html that the produced js will be attaching to, default on index.html, false to skip', 'index.html')
 	.option('-d, --dry', 'Only output the target file type and path instead of actually creating it.')
 	.option('-l, --list', 'List possible types of code you can create using this cmd.')
 	.option('-v, --verbose', 'Output the metadata gathered during the generating process as well.')
@@ -85,14 +85,14 @@ function resolveToJSPath(type, name){
 	}
 	if(!found) return;
 
-	var p = name.split('.'); //target js name segments array without .js, used again later for outputing related html template.
-	if(p[p.length-1] === 'js') p.pop();
+	//target js name segments array without .js, used again later for outputing related html template.
+	var p = nameToPath(name).split('/');
 
 	var jsFullPath;
 	if(_.contains(jsTargets[x].types, p[0])){
-		jsFullPath = path.join(jsTargets[x].base, jsTargets[x].folder, p.join(path.sep));
+		jsFullPath = path.join(jsTargets[x].base, jsTargets[x].folder, p.join('/'));
 	}else {
-		jsFullPath = path.join(jsTargets[x].base, jsTargets[x].folder, (type === 'main'?'':type) + (x === 'client'?'':'s'), p.join(path.sep));
+		jsFullPath = path.join(jsTargets[x].base, jsTargets[x].folder, (type === 'main'?'':type) + (x === 'client'?'':'s'), p.join('/'));
 	}
 	
 	if(!/\.js$/.test(jsFullPath)) jsFullPath += '.js';
@@ -103,6 +103,18 @@ function resolveToJSPath(type, name){
 		path: jsFullPath,
 		nameSegments: p
 	};
+}
+
+function pathToName(path){
+	if(!_.isString(path)) throw new Error('DEV::Application::pathToName You must pass in a valid path string.');
+	if(_.contains(path, '.')) return path;
+	return path.split('/').map(_.str.humanize).map(_.str.classify).join('.');
+}
+
+function nameToPath(name){
+	if(!_.isString(name)) throw new Error('DEV::Application::nameToPath You must pass in a Reusable view name.');
+	if(_.contains(name, '/')) return name;
+	return name.split('.').map(_.str.humanize).map(_.str.slugify).join('/');
 }
 
 //-l, --list
@@ -118,6 +130,7 @@ if(!type || !name){
 	console.error('Empty code type or name...'.red);
 	return;
 }
+name = name.replace(/\.js$/, '');
 
 //guard B
 var target = resolveToJSPath(type, name);
@@ -132,7 +145,7 @@ if(program.dry) console.log('==========Dry Run: no actual file changes occur====
 //1.define the mustache tpl data
 var metadata = {
 	name: name,
-	title: _.str.classify(name.split('.js')[0]),
+	title: pathToName(target.nameSegments.join('/')),
 	type: type.toUpperCase(),
 	path: {
 		relative: target.path.replace(target.base + path.sep, ''),
@@ -147,7 +160,7 @@ if(program.verbose) console.log('Information', metadata);
 //2.special + html tpl, create related template file first if needs be
 var htmlRequiredTypes = ['main', 'view', 'context', 'editor', 'widget'];
 if(_.contains(htmlRequiredTypes, type)){
-	var tplHTMLName = path.join(_.contains(htmlRequiredTypes, target.nameSegments[0])?'':(type === 'main'?'':type), target.nameSegments.join(path.sep) + '.html');
+	var tplHTMLName = path.join(_.contains(htmlRequiredTypes, target.nameSegments[0])?'':(type === 'main'?'':type), target.nameSegments.join('/') + '.html');
 	metadata.template = tplHTMLName;
 	var tplHTMLPath = path.join(env.cwd, env.implementation, 'static', 'template', tplHTMLName);
 	
@@ -171,6 +184,8 @@ if(!fs.existsSync(target.path)){
 
 //4.include newly created js into -i indicated loader html (e.g the index.html)
 if(target.side === 'client'){
+	if(!program.index || program.index === 'false') return;
+
 	var indexFile = path.join(target.base, program.index);
 	if(!fs.existsSync(indexFile)) {
 		console.log('append:', 'can not find:'.red, indexFile);

@@ -1,17 +1,15 @@
 /**
- * Sample {{type}} script. (named view, alias: Regional/Area)
+ * Sample {{type}} script.
  *
  * @author {{author}}
  * @created {{date}}
  */
 ;(function(app){
 
-	app.view({
+	app.view('{{{title}}}', {
 
-		name: '{{{title}}}',
 		template: '@{{{template}}}',
-		
-		//it is basically a Backbone.View or Marionette.ItemView/Layout/CollectionView/CompositeView definition
+		//data: 'url', {} or [],
 		
 		//initialize: function(){ ... },
 		//onShow: function(){ ... },
@@ -21,6 +19,7 @@
 		//	dosomething: function(){...},
 		//	...
 		//},
+
 	});
 
 })(Application);

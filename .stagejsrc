@@ -3,7 +3,6 @@
 	"edge": "stagejs-edge.tar.gz",
 	"kit": "stagejs-starter-kit.tar.gz",
 
-	"design": "./design",
 	"implementation": "./implementation",
 	"tools": "./tools"
 }
