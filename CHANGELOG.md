@@ -2,8 +2,12 @@ Change Log
 ==========
 0.3.0 (2015-08-21*)
 -------------------
-In progress...
-* add code tpl for background tasks in the create cmd;
+
+working on...
+* Checking postgresql and rabbitmq in env cmd's optional listing;
+* Have init depends on env cmd's required listing;
+* [optional]Add resize, iconfont sub-cmd to theme;
+* [optional]Add code tpl for background tasks in the create cmd;
 
 
 0.2.2 (2015-08-21)
