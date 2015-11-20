@@ -6,11 +6,13 @@
  */
 ;(function(app, $){
 
-	/*===============preparations======================*/
+	///////////////preparations///////////////
+	
 
-	/*===============the util/worker functions================*/
+	//////////util/worker functions///////////
+	
 
-	/*===============the plugin================*/
+	///////////////plugin/////////////////////
 	$.fn['{{{name}}}'] = function(options){
 
 		return this.each(function(index, el){

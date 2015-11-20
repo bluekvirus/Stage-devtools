@@ -8,7 +8,7 @@
 
 	app.editor.validator('{{{name}}}', function(options, val, form){
 
-		//check the val here, or ref other fields in the form
+		//check the val here, or ref other fields in the form (view)
 		//options mirrors what you put in the editor's configure block
 
 		//return nothing if ok

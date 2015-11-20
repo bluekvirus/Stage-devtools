@@ -10,15 +10,18 @@
 
 		template: '@{{{template}}}',
 		//data: 'url', {} or [],
+		//coop: ['e', 'e'],
+		//[editors]: {...},
 		
-		//initialize: function(){ ... },
-		//onShow: function(){ ... },
+		initialize: function(){},
+		//onShow: function(){},
+		//onDataRendered: function(){},
 		
-		//actions: {
+		actions: {
 		//	submit: function(){...},
 		//	dosomething: function(){...},
 		//	...
-		//},
+		},
 
 	});
 

@@ -1,6 +1,6 @@
 Change Log
 ==========
-0.3.0 (2015-08-21*)
+0.3.0 (2015-11-19*)
 -------------------
 
 working on...
@@ -10,9 +10,18 @@ working on...
 * [optional]Add code tpl for background tasks in the create cmd;
 
 
+0.2.3 (2015-11-19)
+------------------
+1. Refined main.js template; (+config comments, -app.run)
+2. Refined router template;
+3. Refined editor/widget templates;
+4. Refined view template;
+5. create cmd will now always put js before the last `<script>` tag;
+
+
 0.2.2 (2015-08-21)
 ------------------
-1. Refined code templates for view & context.
+1. Refined code templates for view & context;
 2. Refined name-to-path mapping in the create cmd (to support 1.8 view injection);
 
 

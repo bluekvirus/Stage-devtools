@@ -188,18 +188,19 @@ if(target.side === 'client'){
 
 	var indexFile = path.join(target.base, program.index);
 	if(!fs.existsSync(indexFile)) {
-		console.log('append:', 'can not find:'.red, indexFile);
+		console.log('create:', 'can not find:'.red, indexFile);
 		return;
 	}
 
 	var indexHTML = fs.readFileSync(indexFile, 'utf-8');
 	var $ = cheerio.load(indexHTML);
 	if($('script[src="' + metadata.path.relative + '"]').length > 0) {
-		console.log('append:', 'already in place:'.red, metadata.path.relative, '@', program.index);
+		console.log('create:', 'already in place:'.red, metadata.path.relative, '@', program.index);
 		return;
 	}
-	$('body').append('\t<script src="' + metadata.path.relative + '"></script>\n');
+	//to accommodate dynamic view patching in build, last script will always be <script>app.run()</script> 
+	$('body > script').last().before('<script src="' + metadata.path.relative + '"></script>\n\t');
 	if(!program.dry) fs.outputFileSync(indexFile, $.html());
-	console.log('Appended to', program.index.yellow, '@', indexFile.grey);
+	console.log('Added to', program.index.yellow, '@', indexFile.grey);
 }
 

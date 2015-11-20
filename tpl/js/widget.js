@@ -11,7 +11,9 @@
 		var UI = app.view({
 
 			template: '@{{{template}}}',
-			//...
+			
+			initialize: function(){},
+			//onReconfigure: function(){},
 
 		});
 

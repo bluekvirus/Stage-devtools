@@ -1,6 +1,6 @@
 {
   "name": "stage-devtools",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Devtools for convenient Stage.js development.",
   "main": "index.js",
   "bin": {

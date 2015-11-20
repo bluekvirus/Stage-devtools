@@ -11,7 +11,20 @@
 		var UI = app.view({
 
 			template: '@{{{template}}}',
-			//...
+			
+			getVal: function(){
+				//...
+			},
+
+			setVal: function(data){
+				//...
+			},
+
+			disable: function(flag){},
+			isEnabled: function(){},
+
+			//validate: function(){},
+			//status: function(){},
 
 		});
 
