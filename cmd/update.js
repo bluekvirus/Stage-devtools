@@ -18,7 +18,7 @@ var env = JSON.parse(process.env.stagejs);
 var download = require(path.join(env.twd, 'util/download.js'));
 
 if(!env['stagejs-version']){
-	console.error('You don\'t have a project here...'.red, 'use \'init\' first.'.yellow);
+	console.error('You don\'t have a project here...'.red, 'run \'stagejs init\' first.'.yellow);
 	process.exit(1);
 }
 
@@ -32,15 +32,16 @@ var tmpFolder = path.join(env.cwd, 'tmp');
 shell.rm('-rf', tmpFolder);
 
 //pre.1-1 define merge & update func (keys arg has defaults)
-function mergeUpdateJSON(oldFile, newFile, keys){
+function updateJSON(oldFile, newFile, keys){
 	console.log('Merge & update '.yellow, oldFile, ' ...'.yellow);
 	var jsonNew = fs.readJSONSync(newFile),
 	jsonOld = fs.readJSONSync(oldFile);
-	_.each(keys || ['devDependencies', 'dependencies'], function(key){
-		_.extend(jsonOld[key], jsonNew[key]);
+	_.each(keys || _.without(_.keys(jsonNew), 'dependencies'), function(key){
+		//replace non (project) dependencies properties
+		jsonOld[key] = jsonNew[key];
 	});
 	jsonOld.updatedOn = new Date();
-	fs.writeJSONSync(oldFile, jsonOld);
+	fs.writeJSONSync(oldFile, jsonOld, {spaces: 2});
 }
 //pre.1-2 done cleanup func
 function done () {
@@ -56,7 +57,7 @@ download([env.repo, env.kit].join('/'), tmpFolder, true, function(tmpFolder){
 	console.log('Updating default theme ...'.yellow);
 	shell.cp('-Rf', path.join(tmpFolder, 'kit', 'implementation', 'themes', 'default'), path.join(implFolder, 'themes'));
 	//merge/update bower.json
-	mergeUpdateJSON(path.join(implFolder, 'bower.json'), path.join(tmpFolder, 'kit', 'implementation', 'bower.json'));
+	updateJSON(path.join(implFolder, 'bower.json'), path.join(tmpFolder, 'kit', 'implementation', 'bower.json'));
 	
 	//update tools (build/run.js, shared/*, themeprep/run.js, devserver/run.js, devserver/bot/*, devserver/util/*)
 	console.log('Updating tools ...'.yellow);
@@ -69,7 +70,7 @@ download([env.repo, env.kit].join('/'), tmpFolder, true, function(tmpFolder){
 	shell.cp('-R', path.join(tmpFolder, 'kit', 'tools', 'devserver', 'middlewares', '*'), path.join(toolsFolder, 'devserver', 'middlewares'));
 
 	//merge/update package.json
-	mergeUpdateJSON(path.join(toolsFolder, 'package.json'), path.join(tmpFolder, 'kit', 'tools', 'package.json'));
+	updateJSON(path.join(toolsFolder, 'package.json'), path.join(tmpFolder, 'kit', 'tools', 'package.json'));
 
 	//bower install, npm install
 	shell.cd(implFolder);

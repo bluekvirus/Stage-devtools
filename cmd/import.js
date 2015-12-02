@@ -20,7 +20,7 @@ targz = require('tar.gz');
 var env = JSON.parse(process.env.stagejs);
 
 if(!env['stagejs-version']){
-	console.error('You don\'t have a project here...'.red, 'use \'init\' first.'.yellow);
+	console.error('You don\'t have a project here...'.red, 'run \'stagejs init\' first.'.yellow);
 	process.exit(1);
 }
 

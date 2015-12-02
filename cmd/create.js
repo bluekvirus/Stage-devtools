@@ -46,7 +46,7 @@ _.str = require('underscore.string');
 var env = JSON.parse(process.env.stagejs);
 
 if(!env['stagejs-version']){
-	console.error('You don\'t have a project here...'.red, 'use \'init\' first.'.yellow);
+	console.error('You don\'t have a project here...'.red, 'run \'stagejs init\' first.'.yellow);
 	process.exit(1);
 }
 
@@ -54,6 +54,7 @@ program
 	.usage('[options] <type> <name>')
 	.version('0.1.0')
 	.option('-i, --index <*.html>', 'The .html that the produced js will be attaching to, default on index.html, false to skip', 'index.html')
+	.option('-n, --fileonly', 'Only create the file without appending to .html, need app.config.viewSrcs set to enable auto-loading')
 	.option('-d, --dry', 'Only output the target file type and path instead of actually creating it.')
 	.option('-l, --list', 'List possible types of code you can create using this cmd.')
 	.option('-v, --verbose', 'Output the metadata gathered during the generating process as well.')
@@ -192,15 +193,20 @@ if(target.side === 'client'){
 		return;
 	}
 
-	var indexHTML = fs.readFileSync(indexFile, 'utf-8');
-	var $ = cheerio.load(indexHTML);
-	if($('script[src="' + metadata.path.relative + '"]').length > 0) {
-		console.log('create:', 'already in place:'.red, metadata.path.relative, '@', program.index);
-		return;
+	if(!program.fileonly){
+		var indexHTML = fs.readFileSync(indexFile, 'utf-8');
+		var $ = cheerio.load(indexHTML);
+		if($('script[src="' + metadata.path.relative + '"]').length > 0) {
+			console.log('create:', 'already in place:'.red, metadata.path.relative, '@', program.index);
+			return;
+		}
+		//to accommodate dynamic view patching in build, last script will always be <script>app.run()</script> 
+		$('body > script').last().before('<script src="' + metadata.path.relative + '"></script>\n\t');
+		if(!program.dry) fs.outputFileSync(indexFile, $.html());
+		console.log('Added to', program.index.yellow, '@', indexFile.grey);
+	}else {
+		console.log();
+		console.log('Don\'t forget to set app.config.viewSrcs to enable auto-loading.'.yellow);
 	}
-	//to accommodate dynamic view patching in build, last script will always be <script>app.run()</script> 
-	$('body > script').last().before('<script src="' + metadata.path.relative + '"></script>\n\t');
-	if(!program.dry) fs.outputFileSync(indexFile, $.html());
-	console.log('Added to', program.index.yellow, '@', indexFile.grey);
 }
 

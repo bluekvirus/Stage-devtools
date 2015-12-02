@@ -10,7 +10,16 @@ _ = require('underscore'),
 colors = require('colors'),
 path = require('path'),
 fs = require('fs-extra'),
-shell = require('shelljs');
+shell = require('shelljs'),
+checkPrereq = require('../cli.js');
+
+var check = checkPrereq();
+if(!!check.error){
+	console.error(('You need to fix ' + String(check.error).bold.underline + ' development enviroment error(s) first...').red);
+	console.log();
+	console.log(check.msg);
+	process.exit(1);
+}
 
 var env = JSON.parse(process.env.stagejs);
 var download = require(path.join(env.twd, 'util/download.js'));

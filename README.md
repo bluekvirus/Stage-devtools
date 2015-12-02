@@ -8,9 +8,10 @@ Devtools for convenient Stage.js development.
 Requirement
 -----------
 1. Nodejs v0.10.26+
-2. Bower v1.3.1+
-3. Git v1.8+
-4. GraphicsMagick v1.3.19+
+2. Bower v1.3+
+3. Nodemon v1.1+
+4. Git v1.8+
+5. GraphicsMagick v1.3.19+
 
 
 We have prepared a [development environment guide](ENV.md) for you, please consult it before continue.

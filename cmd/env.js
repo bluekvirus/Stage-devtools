@@ -11,8 +11,7 @@ colors = require('colors'),
 fs = require('fs-extra'),
 path = require('path'),
 os = require('os'),
-should = require('should'),
-shell = require('shelljs');
+checkPrereq = require('../cli.js');
 _.str = require('underscore.string');
 
 var env = JSON.parse(process.env.stagejs);
@@ -30,30 +29,8 @@ _.each(env, function(v, k){
 });
 console.log('---------------------'.yellow);
 
-//programs/cli helpers to check
-var cmdsToCheck = [
-	{cmd:'git', required: true, info: 'Git source code manager'},
-	{cmd:'bower', required: true, info: 'Bower JS package manager'}, 
-	{cmd:'npm', required: true, info: 'Nodejs package manager'},
-	{cmd:'gm', required: true, info: 'GraphicsMagick image processor'}, 
-	{cmd:'nodemon', required: true, info: 'Nodejs process auto-reload'},
-	{cmd:'redis-server', required: false, info: 'Redis key-value store'},
-	{cmd:'mongod', required: false, info: 'MongoDB NoSQL database'}
-];
-_.each(cmdsToCheck, function(d){
-	var msg = 'locate ' + d.cmd.yellow + ' (' + d.info.grey + ') ... ',
-	error;
-		try{
-			should(shell.which(d.cmd)).be.ok;
-		}catch(e){
-			error = true;
-			msg += '[' + 'X'.red + '] ';
-		}finally {
-			if(!error) msg += '[' + 'OK'.green + ']';
-			else msg += d.required?'required'.red:'optional'.grey;
-			console.log(msg);
-		}
-});
+//from calling cli.js
+console.log(checkPrereq().msg);
 console.log('---------------------'.yellow);
 
 //system status check

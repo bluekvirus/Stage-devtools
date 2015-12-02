@@ -1,13 +1,21 @@
 Change Log
 ==========
-0.3.0 (2015-11-19*)
+0.4.0 (2015-12-01*)
 -------------------
 
 working on...
-* Checking postgresql and rabbitmq in env cmd's optional listing;
-* Have init depends on env cmd's required listing;
 * [optional]Add resize, iconfont sub-cmd to theme;
 * [optional]Add code tpl for background tasks in the create cmd;
+
+
+0.3.0 (2015-12-01)
+-------------------
+1. Added postgresql and rabbitmq checking in env cmd's optional listing;
+2. init cmd now depends on env cmd's required listing;
+3. Refined missing cmd-line (env required) help message;
+4. Added cli help message when cmd is wrong;
+5. Added -n option to create cmd; (skip adding to index.html);
+6. update cmd now replaces bower/package.json keys other than `dependencies`; 
 
 
 0.2.3 (2015-11-19)
