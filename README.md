@@ -1,6 +1,6 @@
 Stage-devtools
 ========================
-<img src="http://img.shields.io/npm/v/stage-devtools.svg?style=flat" alt="DevTools Version"></img> <img src="http://img.shields.io/npm/dm/stage-devtools.svg?style=flat" alt="DevTools Download Stat">
+<a href="https://www.npmjs.org/package/stage-devtools"><img src="http://img.shields.io/npm/v/stage-devtools.svg?style=flat" alt="DevTools Version"></img> <img src="http://img.shields.io/npm/dm/stage-devtools.svg?style=flat" alt="DevTools Download Stat"></a>
 
 Devtools for convenient Stage.js development.
 
