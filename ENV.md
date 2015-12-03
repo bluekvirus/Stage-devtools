@@ -37,7 +37,7 @@ You will need some packages to be installed through `npm` globally:
 ```
 List of npm packages:
 
-0. forever
+0. nodemon
 1. http-server
 2. stage-devtools
 
@@ -111,7 +111,9 @@ These optional components are included in the [Virtual Machine](https://github.c
 
 ###Optional programming languages
 1. Python 2/3*
-2. C/Go
+2. Elixir/Erlang
+3. Java
+4. C/Go
 
 *You will probably need Python 2 at least for some of the npm packages. For server side data-services implementation (e.g RESTful services), if somehow you do not want to use Node.js, we recommend Python 3. 
 
