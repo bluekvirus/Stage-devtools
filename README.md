@@ -268,6 +268,6 @@ Update `README.md`(optional), `CHANGELOG.md` and `package.json` before releasing
 
 License
 -------
-Copyright 2014 - 2015 Tim Lauv. 
+Copyright 2014 - 2016 Tim Lauv. 
 Under the [MIT](http://opensource.org/licenses/MIT) License.
 
