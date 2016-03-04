@@ -1,7 +1,7 @@
 Setup your web development environment
 ======================================
 @version 1.0.1
-@author Tim Liu (zhiyuanliu@fortinet.com)
+@author Tim Lauv
 
 A [Virtual Machine](https://github.com/bluekvirus/vm-webdev) has been prepared for you to ease the initial setup of your development environment.
 
