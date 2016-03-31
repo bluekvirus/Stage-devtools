@@ -1,11 +1,18 @@
 Change Log
 ==========
-0.4.0 (2015-12-01*)
--------------------
+0.4.0 (2016-03-30*)
+------------------
 
 working on...
-* [optional]Add resize, iconfont sub-cmd to theme;
+* [optional]Link resize sub-cmd to `stagejs theme`;
+* [optional]Add iconfont sub-cmd to `stagejs theme`;
 * [optional]Add code tpl for background tasks in the create cmd;
+
+
+0.3.1 (2016-03-30)
+-------------------
+1. Refined create cmd templates;
+2. Refined cmd prompt help messages;
 
 
 0.3.0 (2015-12-01)

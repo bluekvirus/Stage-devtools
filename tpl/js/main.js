@@ -8,8 +8,10 @@
 
 	/////////////////setup/////////////////
 	app.setup({
-		template: '@{{{template}}}',
-		navRegion: 'content',
+		template: '@{{{template}}}', //can be undefined if using layout
+		layout: undefined,
+		contextRegion: 'contexts',
+		curtains: {},
 
 		//Note: Always set navRegion if using app template here, unless you've merged it(the tpl) with index.html;
 		
@@ -25,14 +27,7 @@
 		timeout: 5 * 60 * 1000 //general communication timeout (ms), e.g when using app.remote()
 	});
 
-	///////bootstrapping events//////////// - [optional]
-	//app:before-template-ready (if you have app template)
-	//app:template-ready (if you have app template)
-	//-- now you will have app.mainView as the view instance holding the app template.
-	//
-	//initialize:before
-
-	///////////more initializers/////////// - [optional]
+	///////////initializers/////////// - [optional]
 	app.addInitializer(function(){
 
 	});
@@ -40,18 +35,11 @@
 	app.addInitializer(function(){
 
 	});
-
-	//-- add more initializer if you need
-	//
-	//initialize:after
-	//start (this is also an event)
-
-	/////////////craft app engine////////// - [optional]
-	var engine = app.module('Engine');
-	_.extend(engine, {
-
-		//your engine apis for managing this app's state. (e.g invoked in Contexts and Views)
-
-	});
+	//Note: initializer can return a promise object for async loading, 
+	//add more initializers if you need. e.g `return app.remote() or $.ajax()`.
+	
+	///////////////////////////warning///////////////////////////
+	//Don't put app.run() here, use the one found in index.html//
+	/////////////////////////////////////////////////////////////
 
 })(Application);

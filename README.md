@@ -76,26 +76,26 @@ This will create a new `main.js` from our suggested code template.
 
 ###Create contexts
 ```
-stagejs create context <name>
+stagejs create --fileonly context <name>
 ```
 This will create an empty context script and its mockup template.
 
 ###Create views
 ```
-stagejs create view <your view name in dotted notation>
+stagejs create --fileonly view <your view name in dotted notation>
 ```
 This is to create an empty named view script and its mockup template. e.g `a.b.c` means to create both `js/a/b/c.js` and `static/template/a/b/c.html`.
 
 ###Create editors & validators
 ```
-stagejs create editor <name>
+stagejs create --fileonly editor <name>
 stagejs create validator <name>
 ```
 Editors will also have their mockup template created.
 
 ###Create widgets & plugins
 ```
-stagejs create widget <name>
+stagejs create --fileonly widget <name>
 stagejs create plugin <name>
 ```
 Widgets will also have their mockup template created as.
@@ -135,7 +135,7 @@ Without the `use`, `unuse` sub-commands the `lib` command works just like the `b
 
 The `use`, `unuse` will manipulate the `.html` file pointed by the `-i, --index` option, adding/removing 3rd-party library files to the `<script>` tags.
 
-**Tip**: `stagejs lib use <lib>` will automatically consult the library's `bower.json` metadata to figure out which javascript is the main one and use that for you. If the command replies with that it can't find the main javascript then you can specify the relative path of the javascript you want in the library through the 2nd parameter.
+**Tip**: `stagejs lib use <lib> [js file]` will automatically consult the library's `bower.json` metadata to figure out which javascript is the main one and use that for you. If the command replies with that it can't find the main javascript then you can specify the relative path of the javascript you want in the library through the 2nd parameter.
 
 
 ###Update project

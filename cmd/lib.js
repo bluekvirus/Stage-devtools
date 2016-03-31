@@ -64,7 +64,7 @@ if(!library){
 			//1. find the lib in the project's bower.json
 			var bower = require(path.join(env.cwd, env.implementation, 'bower.json'));
 			if(!bower.dependencies[library] && !bower.devDependencies[library]){
-				console.log(library.yellow, 'is not installed yet, use: lib install', library);
+				console.log(library.yellow, 'is not installed yet, use: lib install -s', library);
 				return;
 			}
 			//2. check if there is a main in lib's bower.json or .bower.json file
