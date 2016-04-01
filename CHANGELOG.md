@@ -4,6 +4,7 @@ Change Log
 ------------------
 
 working on...
+* Add Revive cmd for using with freshly forked projects;
 * [optional]Link resize sub-cmd to `stagejs theme`;
 * [optional]Add iconfont sub-cmd to `stagejs theme`;
 * [optional]Add code tpl for background tasks in the create cmd;
