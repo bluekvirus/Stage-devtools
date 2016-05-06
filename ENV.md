@@ -19,7 +19,7 @@ For web programming, your choices will only affect the server side, since the cl
 
 Node.js
 -------
-Please install v0.10.30+ [latest stable](http://nodejs.org/download/)
+Please install v0.10.30+ [latest stable](http://nodejs.org/download/) **Don't use v5.0+**
 
 If you are on an Unbuntu or Linux distribution, you can [use your package manager to install node](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
 
