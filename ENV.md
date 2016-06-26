@@ -38,8 +38,7 @@ You will need some packages to be installed through `npm` globally:
 List of npm packages:
 
 0. nodemon
-1. http-server
-2. stage-devtools
+1. stage-devtools
 
 
 Git
