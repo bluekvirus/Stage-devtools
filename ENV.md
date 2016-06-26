@@ -102,9 +102,9 @@ These optional components are included in the [Virtual Machine](https://github.c
 ###Optional programs
 1. MongoDB
 2. PostgreSQL
-3. Redis
-4. RabbitMQ
-5. Nginx
+3. Nginx
+4. Redis
+5. [RabbitMQ]
 6. [ElasticSearch]
 
 
