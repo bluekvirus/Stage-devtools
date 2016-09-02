@@ -229,13 +229,15 @@ npm install
 ```
 Add or modify commands in `/cmd` folder and have them tested through:
 ```
+touch [Stage-devtools folder]/cmd/[cmd].js
 node [Stage-devtools folder]/cli.js [cmd]
 ```
 So, a commmand named `abc.js` under `/cmd` can be invoked like this:
 ```
 node [Stage-devtools folder]/cli.js abc [rest of the arguments]
 ```
-Make sure you consult the `env.js` and `init.js` before adding new commands.
+
+For a minimum new command implementation consult `/cmd/env.js` or `/cmd/init.js`.
 
 ###Live Tests
 ```

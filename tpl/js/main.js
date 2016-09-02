@@ -10,7 +10,7 @@
 	app.setup({
 		template: '@{{{template}}}', //can be undefined if using layout
 		layout: undefined,
-		contextRegion: 'contexts',
+		navRegion: 'contexts',
 		curtains: {},
 
 		//Note: Always set navRegion if using app template here, unless you've merged it(the tpl) with index.html;

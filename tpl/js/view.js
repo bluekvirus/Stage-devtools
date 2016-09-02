@@ -14,8 +14,7 @@
 		//[editors]: {...},
 		
 		initialize: function(){},
-		//onShow: function(){},
-		//onDataRendered: function(){},
+		onReady: function(){},
 		
 		actions: {
 		//	submit: function(){...},
