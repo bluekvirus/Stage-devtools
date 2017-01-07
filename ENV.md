@@ -78,6 +78,7 @@ List of plugins you need:
 6. Sublime Linter
 7. Sublime Linter - jshint*
 8. SideBarEnhancements
+9. Anaconda (if using python3)
 
 *You will need to install jshint on your system with node.js:
 ```
