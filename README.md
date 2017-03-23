@@ -30,13 +30,13 @@ stagejs -h, --help
 
 Usage
 -----
-###Check environment
+### Check environment
 ```
 stagejs env
 ```
 Pay attention to the result of this command, you might need to install additional programs required by the dev toolset.
 
-###Initialize new project
+### Initialize new project
 ```
 stagejs init
 ```
@@ -68,32 +68,32 @@ npm WARN optional dep failed, continuing canvas@x.x.x
 ```
 You can safely ignore these kind of warning messages during `stagejs init`.
 
-###Create main
+### Create main
 ```
 stagejs create main
 ```
 This will create a new `main.js` from our suggested code template.
 
-###Create contexts
+### Create contexts
 ```
 stagejs create --fileonly context <name>
 ```
 This will create an empty context script and its mockup template.
 
-###Create views
+### Create views
 ```
 stagejs create --fileonly view <your view name in dotted notation>
 ```
 This is to create an empty named view script and its mockup template. e.g `a.b.c` means to create both `js/a/b/c.js` and `static/template/a/b/c.html`.
 
-###Create editors & validators
+### Create editors & validators
 ```
 stagejs create --fileonly editor <name>
 stagejs create validator <name>
 ```
 Editors will also have their mockup template created.
 
-###Create widgets & plugins
+### Create widgets & plugins
 ```
 stagejs create --fileonly widget <name>
 stagejs create plugin <name>
@@ -101,7 +101,7 @@ stagejs create plugin <name>
 Widgets will also have their mockup template created as.
 
 
-###Create/Refresh theme
+### Create/Refresh theme
 (You can also update existing theme with this cmd)
 ```
 //create, refresh
@@ -117,7 +117,7 @@ This will create a new theme for you to develop with, which extends from the *de
 **Tip**: use `-h` to see more options with this command.
 
 
-###Manage 3rd-party libraries
+### Manage 3rd-party libraries
 If you want to use 3rd-party libraries not bundled with the framework distribution, you can use the `stagejs lib` command: 
 ```
 //update, install/uninstall and other normal `bower` commands.
@@ -138,7 +138,7 @@ The `use`, `unuse` will manipulate the `.html` file pointed by the `-i, --index`
 **Tip**: `stagejs lib use <lib> [js file]` will automatically consult the library's `bower.json` metadata to figure out which javascript is the main one and use that for you. If the command replies with that it can't find the main javascript then you can specify the relative path of the javascript you want in the library through the 2nd parameter.
 
 
-###Update project
+### Update project
 ```
 stagejs update [-e, --edge]
 ```
@@ -158,7 +158,7 @@ This will build your project into production ready package, including js combine
 **Tip**: use `-h` to see more options with this command.
 
 
-###Start dev app server
+### Start dev app server
 (single config/setup file - profile.js)
 ```
 stagejs serve [--port <port number>] [--profile <profile name>]
@@ -169,32 +169,32 @@ This will start the development server for you. It includes CORS, HTTP(s) Reques
 
 **Limitation**: There is no group/role based authorization yet, only ACL based authentication atm.
 
-###Create routes
+### Create routes
 (+RESTful APIs based on Expressjs4)
 ```
 stagejs create router <your router name in dotted notation>
 ```
 
-###Create middlewares
+### Create middlewares
 ```
 stagejs create middleware <name>
 ```
 
 **Limitation**: It requires more effort than just creating a middleware definition file from this command. Given that the sequence of middleware loading does affect your application, and some of the middleware requires additional configure to setup, you will have to manually edit the middleware stack in the server profile before your new middleware can take effect in the app server.
 
-###Create tasks (TBI)
+### Create tasks (TBI)
 ```
 stagejs create task <your task name>
 ```
 This will create an empty background task definiton stub for you.
 
-###Export project code
+### Export project code
 ```
 stagejs export
 ```
 This will package your project into `exported.tar.gz` according to `tools/build/config.export.js`.
 
-###Import project code
+### Import project code
 ```
 stagejs import [exported package file] [-o, --override]
 ```
@@ -239,7 +239,7 @@ node [Stage-devtools folder]/cli.js abc [rest of the arguments]
 
 For a minimum new command implementation consult `/cmd/env.js` or `/cmd/init.js`.
 
-###Live Tests
+### Live Tests
 ```
 mkdir TestProject
 cd TestProject
@@ -270,6 +270,6 @@ Update `README.md`(optional), `CHANGELOG.md` and `package.json` before releasing
 
 License
 -------
-Copyright 2014 - 2016 Tim Lauv. 
+Copyright 2014 - 2017 Tim Lauv. 
 Under the [MIT](http://opensource.org/licenses/MIT) License.
 
