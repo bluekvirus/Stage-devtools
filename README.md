@@ -146,7 +146,7 @@ This will update `bower.json` and then maintain the bower managed packages (it w
 
 By default, the `update` command will only install missing libraries & packages indicated by the updated `bower.json` and `package.json`. (Yes if the version number of a package changes, the install process will update it)
 
-###Build project
+### Build project
 (single config file - dist.js, doesn't require app server to be running)
 ```
 stagejs build [--dist <path to your deploy folder>] [--config <config name>]
