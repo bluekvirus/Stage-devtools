@@ -11,7 +11,10 @@
 		template: '@{{{template}}}',
 		//data: 'url', {} or [],
 		//coop: ['e', 'e'],
-		//[editors]: {...},
+		//poll:
+		//channels:
+		//editors:
+		//svg:
 		
 		initialize: function(){},
 		onReady: function(){},

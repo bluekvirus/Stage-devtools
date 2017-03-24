@@ -1,10 +1,14 @@
 Change Log
 ==========
-0.4.0 (2016-03-30*)
+0.3.2+ (2017-03-23*)
 ------------------
+1. Refined view/context code template;
+2. Refined default html template;
+3. Refined main html template;
 
 working on...
-* Add Revive cmd for using with freshly forked projects;
+* Add channel.js to js template for create cmd;
+* Add a default build'n'theme cmd implementation to use without starter-kit;
 * [optional]Link resize sub-cmd to `stagejs theme`;
 * [optional]Add iconfont sub-cmd to `stagejs theme`;
 * [optional]Add code tpl for background tasks in the create cmd;
