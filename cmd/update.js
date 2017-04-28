@@ -76,7 +76,7 @@ download([env.repo, env.kit].join('/'), tmpFolder, true, function(tmpFolder){
 	shell.cd(implFolder);
 
 		console.log('Installing missing Javascript libraries ...'.yellow);
-		shell.exec('bower install');
+		shell.exec('bower update');
 
 	shell.cd('..');
 	shell.cd(toolsFolder);
